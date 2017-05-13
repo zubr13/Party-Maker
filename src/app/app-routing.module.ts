@@ -53,16 +53,9 @@ const routes: Routes = [
       {
         path: 'my-events',
         component: MyEventsComponent,
-        children: [
-          {
-            path: 'participated',
-            component: ParticipatedComponent
-          },
-          {
-            path: 'organized',
-            component: OrganizedComponent
-          }
-        ]
+        data: {
+          name: 'My Events'
+        },
       },
       {
         path: 'create',

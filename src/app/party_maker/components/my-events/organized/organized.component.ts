@@ -28,8 +28,12 @@ export class OrganizedComponent implements OnInit {
     });
   }
 
+  loadImg($event) {
+    $event.currentTarget.style.opacity = 1;
+  }
+
   toEvent(event) {
-    this.router.navigate(['/app', 'event', event.$key, 'info']);
+    this.router.navigate(['/app', 'event', event.$key]);
   }
 
 }
