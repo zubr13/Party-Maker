@@ -56,7 +56,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
   ],
   exports: [
     InteractiveMapComponent,
-    CanvasImageDirective
+    CanvasImageDirective,
     AgmMap,
     AgmMarker
   ]
