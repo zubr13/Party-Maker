@@ -1,10 +1,9 @@
 .filter-events {
   display: flex;
+  flex-wrap: wrap;
 }
 .search {
   padding-top: 60px;
-  width: 300px;
-  width: 30%;
   color: #3c3c3c;
   text-transform: uppercase;
 
@@ -48,7 +47,7 @@
 }
 
 .filter-map {
-  width: 60%;
+  flex-grow: 1;
 }
 agm-map {
   height: 500px;

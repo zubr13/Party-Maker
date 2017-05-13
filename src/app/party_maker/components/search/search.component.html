@@ -51,7 +51,6 @@
         </md-slider>
         <a md-fab><p>{{options.duration | date: 'hh:mm'}}</p></a>
       </section>
-
       <section class="search--section">
       </section>
     </md-card-content>
@@ -62,7 +61,7 @@
                   [longitude]="event.longtitude" [label]="'M'"
                   (markerClick)="goToEvent(event)">
       </agm-marker>
-      <agm-circle [latitude]="center.latitude" [longitude]="center.longtitude" 
+      <agm-circle [latitude]="center.latitude" [longitude]="center.longtitude"
           [radius]="options.radius"
           [fillColor]="'red'"
           [circleDraggable]="true"
