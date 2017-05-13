@@ -26,7 +26,6 @@ export class CreateEventComponent {
   ) {
     db.getList('categories').first().subscribe(list => {
       this.categories = list.map(item => item.$value);
-      console.log(this.categories);
     });
   }
 

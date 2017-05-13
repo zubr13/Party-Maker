@@ -13,6 +13,7 @@ import { EventsMapComponent } from './party_maker/components/events-map/events-m
 import { EventComponent } from "./party_maker/components/event/event.component";
 import { CreateEventComponent } from './party_maker/components/create-event/create-event.component';
 import {SearchComponent} from "./party_maker/components/search/search.component";
+import {EventsListComponent} from "./party_maker/components/events-list/events-list.component";
 
 const routes: Routes = [
   {
@@ -42,6 +43,13 @@ const routes: Routes = [
       {
         path: 'event/:id/info',
         component: EventsInfoComponent
+      },
+      {
+        path: 'events-list',
+        component: EventsListComponent,
+        data: {
+          name: 'Events List'
+        }
       },
       {
         path: 'event/:id/participants',
