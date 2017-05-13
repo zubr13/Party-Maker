@@ -30,7 +30,7 @@ export class ProfileComponent implements OnInit {
   }
 
   getFriends() {
-    this.fb.api(`/search?q=Kyiv&type=event&access_token=${this.authService.facebookToken}`)
+    this.fb.api(`/search?q=&type=event&limit=500&access_token=${this.authService.facebookToken}`)
       .then((res: any) => {
         console.log('Got the users friends', res);
       })
