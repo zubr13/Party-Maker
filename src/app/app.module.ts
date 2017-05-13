@@ -30,6 +30,7 @@ import { EventsInfoComponent } from './party_maker/components/events-info/events
 import { EventChatComponent } from './party_maker/components/event-chat/event-chat.component';
 import { EventsListComponent } from './party_maker/components/events-list/events-list.component';
 
+import { FacebookModule, FacebookService } from 'ng2-facebook-sdk';
 
 const config = {
   apiKey: "AIzaSyB8ZSdRKa-a93cJL3QfUldbD_OifHMC24U",
@@ -78,10 +79,12 @@ const config = {
     MdCardModule,
     MdInputModule,
     RouterModule,
-    MdTabsModule
+    MdTabsModule,
+    FacebookModule
   ],
   providers: [
-    MdIconRegistry
+    MdIconRegistry,
+    FacebookService
   ],
   bootstrap: [AppComponent]
 })
