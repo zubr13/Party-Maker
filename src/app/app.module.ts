@@ -7,7 +7,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {
-  MdButtonModule, MdCardModule, MdCheckboxModule, MdGridList, MdGridListModule, MdIconModule, MdIconRegistry,
+  MdButtonModule, MdCardModule, MdCheckboxModule, MdGridListModule, MdIconModule, MdIconRegistry,
   MdInputModule, MdListModule,
   MdSelectModule,
   MdSidenavModule, MdSliderModule, MdTabsModule
@@ -27,7 +27,6 @@ import { SearchComponent } from "./party_maker/components/search/search.componen
 import { LogoComponent } from './party_maker/components/logo/logo.component';
 import { EventParticipantsComponent } from './party_maker/components/event-participants/event-participants.component';
 import { EventsInfoComponent } from './party_maker/components/events-info/events-info.component';
-import { EventChatComponent } from './party_maker/components/event-chat/event-chat.component';
 import { EventsListComponent } from './party_maker/components/events-list/events-list.component';
 
 import { FacebookModule, FacebookService } from 'ng2-facebook-sdk';
@@ -55,7 +54,6 @@ const config = {
     LogoComponent,
     EventParticipantsComponent,
     EventsInfoComponent,
-    EventChatComponent,
     EventsListComponent
   ],
   imports: [
@@ -74,6 +72,7 @@ const config = {
     MdSliderModule,
     MdGridListModule,
     MdSelectModule,
+    MdTabsModule,
     MdSidenavModule,
     MdListModule,
     MdCardModule,

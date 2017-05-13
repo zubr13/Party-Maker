@@ -42,10 +42,6 @@ const routes: Routes = [
         }
       },
       {
-        path: 'event/:id/info',
-        component: EventsInfoComponent
-      },
-      {
         path: 'events-list',
         component: EventsListComponent,
         data: {
@@ -53,13 +49,21 @@ const routes: Routes = [
         }
       },
       {
-        path: 'event/:id/participants',
-        component: EventParticipantsComponent
+        path: 'event/:id',
+        component: EventComponent
       },
-      {
-        path: 'event/:id/chat',
-        component: EventChatComponent
-      },
+      // {
+      //   path: 'event/:id/info',
+      //   component: EventComponent
+      // },
+      // {
+      //   path: 'event/:id/participants',
+      //   component: EventParticipantsComponent
+      // },
+      // {
+      //   path: 'event/:id/chat',
+      //   component: EventChatComponent
+      // },
       {
         path: 'my-events',
         component: MyEventsComponent,

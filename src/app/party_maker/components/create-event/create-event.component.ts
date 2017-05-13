@@ -75,7 +75,7 @@ export class CreateEventComponent {
         savePath(n, path);
         if (loaded[0] && loaded[1]) {
           this.isLoading = false;
-          this.router.navigate(['app', 'event', key, 'info'])
+          this.router.navigate(['app', 'event', key])
         }
       };
       console.log(key, this.file, this.smallFile);
