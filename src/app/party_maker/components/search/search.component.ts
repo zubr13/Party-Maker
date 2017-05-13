@@ -39,7 +39,7 @@ export class SearchComponent implements OnInit {
         isFree: false,
         value: 2
     },
-    radius: 500,
+    radius: 2000,
     data: null
   };
 
@@ -49,7 +49,7 @@ export class SearchComponent implements OnInit {
     this.db.getList('events')
       .subscribe((events) => {
         this.events = events;
-        this.filteredEvents = this.events;
+        this.filterEvents();
       });
   }
 
