@@ -1,8 +1,16 @@
+<app-loader [style.opacity]="isLoading ? 1 : 0" [style.zIndex]="isLoading ? 1000000 : -1"></app-loader>
 <md-card *ngIf="!placeOnMapMode">
   <div class="image-container" (click)="fileLoader.click()">
     <img  [src]="img || imageUrl || 'src/assets/default.jpg'" (load)="loadImg($event)">
     <canvas appCanvasImage
-            [config]="{quality: 1, saveRatio: false, jpeg : true}"
+            width="250"
+            [config]="{quality: 1, saveRatio: true, jpeg : true}"
+            [img]="file"
+            (onImageMinificationDone)="minifiedImage($event)"
+    ></canvas>
+    <canvas appCanvasImage
+            width="50"
+            [config]="{quality: 1, saveRatio: true, jpeg : true}"
             [img]="file"
             (onImageMinificationDone)="minifiedImage($event)"
     ></canvas>
@@ -10,7 +18,7 @@
   </div>
   <form name='createEvent'>
       <md-input-container>
-        <input name="name" mdInput  [(ngModel)]="event.name" placeholder="Name">
+        <input name="name" mdInput [(ngModel)]="event.name" placeholder="Name">
       </md-input-container>
     <p>
       <md-input-container>
@@ -22,13 +30,11 @@
         <input name="price" mdInput [(ngModel)]="event.price" placeholder="Price">
       </md-input-container>
     </p>
-    <!--<p>
-      <md-select placeholder="category" [(ngModel)]="event.category" name="food">
-      <md-option *ngFor="let category of categories" [value]="category.name">
-        {{category.name}}
-      </md-option>
+    <md-select *ngIf="categories"
+               [placeholder]="'Category'"
+               (change)="categoryChange($event.value)">
+      <md-option *ngFor="let category of categories" [value]="category">{{category}}</md-option>
     </md-select>
-    </p>-->
     <button (click)="onPlaceOnMap()" md-fab><i class="material-icons">add_location</i></button>
     <h4>Add location</h4>
 

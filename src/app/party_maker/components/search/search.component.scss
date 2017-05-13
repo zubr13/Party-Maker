@@ -1,5 +1,9 @@
+.filter-events {
+  display: flex;
+  flex-wrap: wrap;
+}
 .search {
-  width: 300px;
+  padding-top: 60px;
   color: #3c3c3c;
   text-transform: uppercase;
 
@@ -40,4 +44,11 @@
 
 .example-margin {
   margin: 0 10px;
+}
+
+.filter-map {
+  flex-grow: 1;
+}
+agm-map {
+  height: 500px;
 }

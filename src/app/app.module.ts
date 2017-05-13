@@ -7,8 +7,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {
-  MdButtonModule, MdCardModule, MdCheckboxModule, MdIconModule, MdIconRegistry, MdInputModule, MdListModule,
-  MdSidenavModule, MdSliderModule, MdTabsModule, MdGridTile, MdGridList
+  MdButtonModule, MdCardModule, MdCheckboxModule, MdGridList, MdGridListModule, MdIconModule, MdIconRegistry,
+  MdInputModule, MdListModule,
+  MdSelectModule,
+  MdSidenavModule, MdSliderModule, MdTabsModule
 } from "@angular/material";
 import { AngularFireModule } from "angularfire2";
 import { AppRoutingModule } from './app-routing.module';
@@ -25,7 +27,11 @@ import { SearchComponent } from "./party_maker/components/search/search.componen
 import { LogoComponent } from './party_maker/components/logo/logo.component';
 import { EventParticipantsComponent } from './party_maker/components/event-participants/event-participants.component';
 import { EventsInfoComponent } from './party_maker/components/events-info/events-info.component';
+<<<<<<< HEAD
 import { EventChatComponent } from './party_maker/components/event-chat/event-chat.component';
+=======
+import { EventsListComponent } from './party_maker/components/events-list/events-list.component';
+>>>>>>> f9129437be1bdbb763bcc4561b513351b80486e0
 
 const config = {
   apiKey: "AIzaSyB8ZSdRKa-a93cJL3QfUldbD_OifHMC24U",
@@ -50,7 +56,11 @@ const config = {
     LogoComponent,
     EventParticipantsComponent,
     EventsInfoComponent,
+<<<<<<< HEAD
     EventChatComponent
+=======
+    EventsListComponent
+>>>>>>> f9129437be1bdbb763bcc4561b513351b80486e0
   ],
   imports: [
     BrowserModule,
@@ -66,6 +76,8 @@ const config = {
     MdIconModule,
     MdCheckboxModule,
     MdSliderModule,
+    MdGridListModule,
+    MdSelectModule,
     MdSidenavModule,
     MdListModule,
     MdCardModule,

@@ -1,54 +1,74 @@
-<md-card class="search">
-  <md-card-title class="searchTitle">ADVANCED SEARCH</md-card-title>
+<div class="filter-events">
+  <md-card class="search">
+    <md-card-title class="searchTitle">
+      <md-input-container>
+        <input mdInput placeholder="Event name" value="Kitten's show" [(ngModel)]="searchQuery">
+      </md-input-container>
+    </md-card-title>
 
-  <md-card-content>
-    <section class="search--section">
-      <p class="search--sectionTitle">Category</p>
-      <md-checkbox md-line class="search--checkbox"
-                   *ngFor="let category of options.category"
-                   [(ngModel)]="category.value">{{category.name}}</md-checkbox>
-    </section>
+    <md-card-content>
+      <section class="search--section">
+        <p class="search--sectionTitle">Category</p>
+        <md-checkbox md-line class="search--checkbox"
+                    *ngFor="let category of options.category"
+                    [(ngModel)]="category.value">{{category.name}}</md-checkbox>
+      </section>
 
-    <section class="search--section inline">
-      <p class="search--sectionTitle">Price</p>
-      <md-slider
-        class="search--slider"
-        [max]="1000"
-        [min]="0"
-        [step]="10"
-        [disabled]="options.price.isFree"
-        [(ngModel)]="options.price.value">
-      </md-slider>
-      <a md-fab><p>&#8372; {{!options.price.isFree && options.price.value || 0}}</p></a>
-      <md-checkbox class="search--checkbox"  [(ngModel)]="options.price.isFree">free</md-checkbox>
-    </section>
+      <section class="search--section inline">
+        <p class="search--sectionTitle">Price</p>
+        <md-slider
+          class="search--slider"
+          [max]="1000"
+          [min]="0"
+          [step]="10"
+          [disabled]="options.price.isFree"
+          [(ngModel)]="options.price.value">
+        </md-slider>
+        <a md-fab><p>&#8372; {{!options.price.isFree && options.price.value || 0}}</p></a>
+        <md-checkbox class="search--checkbox"  [(ngModel)]="options.price.isFree">free</md-checkbox>
+      </section>
 
-    <section class="search--section inline">
-      <p class="search--sectionTitle">Distance</p>
-      <md-slider
-        class="search--slider"
-        [max]="10"
-        [min]="0.1"
-        [step]="0.1"
-        [(ngModel)]="options.distance">
-      </md-slider>
-      <a md-fab><p>{{options.distance.toFixed(2)}}</p></a>
-    </section>
+      <section class="search--section inline">
+        <p class="search--sectionTitle">Radius</p>
+        <md-slider
+          class="search--slider"
+          [max]="5000"
+          [min]="0.1"
+          [step]="0.1"
+          [(ngModel)]="options.radius">
+        </md-slider>
+        <a md-fab><p>{{options.radius.toFixed(2)}}</p></a>
+      </section>
 
-    <section class="search--section inline">
-      <p class="search--sectionTitle">Duration</p>
-      <md-slider
-        class="search--slider"
-        [max]="50"
-        [min]="1"
-        [step]="1"
-        [(ngModel)]="options.duration">
-      </md-slider>
-      <a md-fab><p>{{options.duration | date: 'hh:mm'}}</p></a>
-    </section>
-
-    <section class="search--section">
-    </section>
-  </md-card-content>
-</md-card>
-
+      <section class="search--section inline">
+        <p class="search--sectionTitle">Duration</p>
+        <md-slider
+          class="search--slider"
+          [max]="50"
+          [min]="1"
+          [step]="1"
+          [(ngModel)]="options.duration">
+        </md-slider>
+        <a md-fab><p>{{options.duration | date: 'hh:mm'}}</p></a>
+      </section>
+      <section class="search--section">
+      </section>
+    </md-card-content>
+  </md-card>
+  <md-card class="filter-map">
+    <agm-map [latitude]="lat" [longitude]="lng">
+      <agm-marker *ngFor="let event of events" [latitude]="event.latitude"
+                  [longitude]="event.longtitude" [label]="'M'"
+                  (markerClick)="goToEvent(event)">
+      </agm-marker>
+      <agm-circle [latitude]="center.latitude" [longitude]="center.longtitude"
+          [radius]="options.radius"
+          [fillColor]="'red'"
+          [circleDraggable]="true"
+          [editable]="true"
+          (radiusChange)="onRadiusChange($event)"
+          (centerChange)="onCenterChange($event)">
+      </agm-circle>
+  </agm-map>
+  </md-card>
+</div>
