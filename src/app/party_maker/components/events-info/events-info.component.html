@@ -1,0 +1,20 @@
+<md-card class="example-card" *ngIf="event">
+  <md-card-header>
+    <div md-card-avatar class="example-header-image"></div>
+    <md-card-title>{{event.name}}</md-card-title>
+  </md-card-header>
+  <img md-card-image src="https://angular.io/resources/images/logos/angular/angular.svg">
+  <md-card-content>
+    <p>
+      {{event.description}}
+    </p>
+  </md-card-content>
+  <md-card-actions *ngIf="!isUserParticipated">
+    <button md-button (click)="participate()">Participate</button>
+  </md-card-actions>
+  <md-card-content *ngIf="isUserParticipated">
+    <p>
+      You are participated!
+    </p>
+  </md-card-content>
+</md-card>    

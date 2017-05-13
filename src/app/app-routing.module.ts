@@ -1,3 +1,5 @@
+import { EventParticipantsComponent } from './event-participants/event-participants.component';
+import { EventsInfoComponent } from './party_maker/components/events-info/events-info.component';
 import { OrganizedComponent } from './party_maker/components/my-events/organized/organized.component';
 import { ParticipatedComponent } from './party_maker/components/my-events/participated/participated.component';
 import { MyEventsComponent } from './party_maker/components/my-events/my-events.component';
@@ -40,6 +42,16 @@ const routes: Routes = [
       {
         path: 'event/:id',
         component: EventComponent,
+        children: [
+          {
+            path: 'info',
+            component: EventsInfoComponent
+          },
+          {
+            path: 'participants',
+            component: EventParticipantsComponent
+          }
+        ]
       },
       {
         path: 'my-events',
