@@ -39,6 +39,7 @@ export class CreateEventComponent {
   onSave () {
     this.event.userId = this.auth.auth.currentUser.uid;
     this.db.pushDataToList('events', this.event);
+    this.event = {};
   }
 
   loadImg(event): void {

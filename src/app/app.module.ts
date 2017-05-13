@@ -1,4 +1,4 @@
-import { RouterModule, ActivatedRouteSnapshot } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { MyEventsModule } from './party_maker/components/my-events/my-events.module';
 import { ProfileComponent } from './party_maker/components/profile/profile.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -6,7 +6,10 @@ import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MdIconRegistry, MaterialModule } from "@angular/material";
+import {
+  MdButtonModule, MdCardModule, MdCheckboxModule, MdIconModule, MdIconRegistry, MdInputModule, MdListModule,
+  MdSidenavModule, MdSliderModule
+} from "@angular/material";
 import { AngularFireModule } from "angularfire2";
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from "./shared/shared.module";
@@ -51,11 +54,18 @@ const config = {
     ReactiveFormsModule,
     HttpModule,
     AppRoutingModule,
-    MaterialModule.forRoot(),
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(config),
     SharedModule,
     MyEventsModule,
+    MdButtonModule,
+    MdIconModule,
+    MdCheckboxModule,
+    MdSliderModule,
+    MdSidenavModule,
+    MdListModule,
+    MdCardModule,
+    MdInputModule,
     RouterModule
   ],
   providers: [
