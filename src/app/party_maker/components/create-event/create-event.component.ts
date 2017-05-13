@@ -16,6 +16,7 @@ export class CreateEventComponent {
   public img: any;
   public file: File | null;
   public smallFile: any;
+  public isLoading = false;
 
   constructor(
       private auth: AngularFireAuth,
@@ -52,29 +53,31 @@ export class CreateEventComponent {
   }
 
   onSave () {
+    this.isLoading = true;
     this.event.userId = this.auth.auth.currentUser.uid;
     this.db.pushDataToList('events', this.event).then(snapshot => {
       const key = snapshot.key;
       const loaded = [false, false];
-      const callback = n => {
+      const savePath = (n, path) =>
+          this.storage.getImage(path).first().subscribe(url => {
+            this.db.saveData(`events/${snapshot.key}/${n === 0 ? 'image' : 'icon'}`, url)
+          });
+
+      const callback = (n, path) => {
         loaded[n] = true;
+        savePath(n, path);
         if (loaded[0] && loaded[1]) {
-          console.log('navigated');
+          this.isLoading = false;
           this.router.navigate(['app', 'event', key, 'info'])
         }
       };
       console.log(key, this.file, this.smallFile);
-      this.storage.uploadFile(`events/${key}/image`, this.file).subscribe(
-          () => console.log('next1'),
-          null,
-          () => callback(0)
+      this.storage.uploadFile(`events/${key}/image`, this.file).subscribe(null, null,
+          () => callback(0, `events/${key}/image`)
       );
-      this.storage.uploadFile(`events/${key}/icon`, this.smallFile).subscribe(
-          () => console.log('next2'),
-          null,
-          () => callback(1)
+      this.storage.uploadFile(`events/${key}/icon`, this.smallFile).subscribe(null, null,
+          () => callback(1, `events/${key}/icon`)
       );
-      console.log(key);
     });
     this.event = {};
   }

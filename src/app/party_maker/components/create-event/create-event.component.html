@@ -1,15 +1,16 @@
+<app-loader [style.opacity]="isLoading ? 1 : 0" [style.zIndex]="isLoading ? 1000000 : -1"></app-loader>
 <md-card *ngIf="!placeOnMapMode">
   <div class="image-container" (click)="fileLoader.click()">
     <img  [src]="img || imageUrl || 'src/assets/default.jpg'" (load)="loadImg($event)">
     <canvas appCanvasImage
             width="250"
-            [config]="{quality: 1, saveRatio: false, jpeg : true}"
+            [config]="{quality: 1, saveRatio: true, jpeg : true}"
             [img]="file"
             (onImageMinificationDone)="minifiedImage($event)"
     ></canvas>
     <canvas appCanvasImage
             width="50"
-            [config]="{quality: 1, saveRatio: false, jpeg : true}"
+            [config]="{quality: 1, saveRatio: true, jpeg : true}"
             [img]="file"
             (onImageMinificationDone)="minifiedImage($event)"
     ></canvas>
