@@ -1,3 +1,20 @@
-<p>
-  event-participants works!
-</p>
+<nav md-tab-nav-bar *ngIf="eventId">
+  <a md-tab-link
+     [routerLink]="['/app', 'event', eventId, 'info']"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="rla.isActive">
+    Info
+  </a>
+  <a md-tab-link
+     [routerLink]="['/app', 'event', eventId, 'participants']"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="rla.isActive">
+    Participants
+  </a>
+</nav>
+<md-list *ngIf="users">
+  <md-list-item *ngFor="let user of users" (click)="toEvent(event)">
+    <img md-list-avatar [src]="user.photoURL" >
+    <h3 md-line> {{user.displayName}} </h3>
+  </md-list-item>
+</md-list>
