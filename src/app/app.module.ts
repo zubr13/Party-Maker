@@ -22,7 +22,7 @@ import { EventComponent } from './party_maker/components/event/event.component';
 import { PlaceOnMapComponent } from './party_maker/components/place-on-map/place-on-map.component';
 import { CreateEventComponent } from './party_maker/components/create-event/create-event.component';
 import { SearchComponent } from "./party_maker/components/search/search.component";
-import { EventParticipantsComponent } from './event-participants/event-participants.component';
+import { EventParticipantsComponent } from './party_maker/components/event-participants/event-participants.component';
 import { EventsInfoComponent } from './party_maker/components/events-info/events-info.component';
 
 const config = {

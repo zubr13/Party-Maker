@@ -1,4 +1,4 @@
-import { EventParticipantsComponent } from './event-participants/event-participants.component';
+import { EventParticipantsComponent } from './party_maker/components/event-participants/event-participants.component';
 import { EventsInfoComponent } from './party_maker/components/events-info/events-info.component';
 import { OrganizedComponent } from './party_maker/components/my-events/organized/organized.component';
 import { ParticipatedComponent } from './party_maker/components/my-events/participated/participated.component';
