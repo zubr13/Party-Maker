@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EventsInfoComponent } from './events-info.component';
+import { EventChatComponent } from './event-chat.component';
 
-describe('EventsInfoComponent', () => {
-  let component: EventsInfoComponent;
-  let fixture: ComponentFixture<EventsInfoComponent>;
+describe('EventChatComponent', () => {
+  let component: EventChatComponent;
+  let fixture: ComponentFixture<EventChatComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EventsInfoComponent ]
+      declarations: [ EventChatComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EventsInfoComponent);
+    fixture = TestBed.createComponent(EventChatComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

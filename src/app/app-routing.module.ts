@@ -1,3 +1,4 @@
+import { EventChatComponent } from './party_maker/components/event-chat/event-chat.component';
 import { EventParticipantsComponent } from './party_maker/components/event-participants/event-participants.component';
 import { EventsInfoComponent } from './party_maker/components/events-info/events-info.component';
 import { OrganizedComponent } from './party_maker/components/my-events/organized/organized.component';
@@ -13,6 +14,7 @@ import { EventsMapComponent } from './party_maker/components/events-map/events-m
 import { EventComponent } from "./party_maker/components/event/event.component";
 import { CreateEventComponent } from './party_maker/components/create-event/create-event.component';
 import {SearchComponent} from "./party_maker/components/search/search.component";
+import {EventsListComponent} from "./party_maker/components/events-list/events-list.component";
 
 const routes: Routes = [
   {
@@ -44,8 +46,19 @@ const routes: Routes = [
         component: EventsInfoComponent
       },
       {
+        path: 'events-list',
+        component: EventsListComponent,
+        data: {
+          name: 'Events List'
+        }
+      },
+      {
         path: 'event/:id/participants',
         component: EventParticipantsComponent
+      },
+      {
+        path: 'event/:id/chat',
+        component: EventChatComponent
       },
       {
         path: 'my-events',

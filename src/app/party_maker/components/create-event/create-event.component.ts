@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { DatabaseService } from './../../../shared/serivces/database.service';
 import {StorageService} from "../../../shared/serivces/storage.service";
@@ -23,7 +23,15 @@ export class CreateEventComponent {
       private db: DatabaseService,
       private storage: StorageService,
       private router: Router
-  ) { }
+  ) {
+    db.getList('categories').first().subscribe(list => {
+      this.categories = list.map(item => item.$value);
+    });
+  }
+
+  categoryChange(val) {
+    this.event.category = val;
+  }
 
 
   minifiedImage(obj : Object): void {
@@ -49,7 +57,6 @@ export class CreateEventComponent {
 
   onPlaceSave () {
     this.placeOnMapMode = false;
-    console.log('event', this.event);
   }
 
   onSave () {

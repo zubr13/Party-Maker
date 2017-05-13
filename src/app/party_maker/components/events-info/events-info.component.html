@@ -11,6 +11,12 @@
      [active]="rla.isActive">
     Participants
   </a>
+  <a md-tab-link
+     [routerLink]="['/app', 'event', eventId, 'chat']"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="rla.isActive">
+    Chat
+  </a>
 </nav>
 <md-card class="example-card" *ngIf="event">
   <md-card-header>

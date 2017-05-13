@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { DatabaseService } from './../../../shared/serivces/database.service'; 
+import { Component, OnInit } from '@angular/core';
+import { DatabaseService } from './../../../shared/serivces/database.service';
 
 @Component({
   selector: 'app-search',
@@ -38,7 +38,8 @@ export class SearchComponent implements OnInit {
         isFree: false,
         value: 2
     },
-    radius: 500
+    radius: 500,
+    data: null
   };
 
   constructor(private db: DatabaseService) {}
