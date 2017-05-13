@@ -2,7 +2,7 @@
   display: flex;
 }
 .search {
-  width: 300px;
+  width: 30%;
   color: #3c3c3c;
   text-transform: uppercase;
 
@@ -45,7 +45,9 @@
   margin: 0 10px;
 }
 
+.filter-map {
+  width: 60%;
+}
 agm-map {
   height: 500px;
-  width: 500px;
 }
