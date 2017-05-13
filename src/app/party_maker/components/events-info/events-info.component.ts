@@ -21,9 +21,11 @@ export class EventsInfoComponent implements OnInit {
       if(params['id']){
         this.eventId = params['id'];
       }
+      console.log(params);
       this.dbService.getValue(`events/${this.eventId}`).map( event => {
         event.eventId = this.eventId;
         this.event = event;
+        console.log(event);
         return event;
       }).subscribe( event => {
         this.dbService.getList(`userEvents/${this.auth.auth.currentUser.uid}`, {

@@ -40,15 +40,15 @@ const routes: Routes = [
         }
       },
       {
-        path: 'event/:id',
+        path: 'event',
         component: EventComponent,
         children: [
           {
-            path: 'info',
+            path: ':id/info',
             component: EventsInfoComponent
           },
           {
-            path: 'participants',
+            path: ':id/participants',
             component: EventParticipantsComponent
           }
         ]

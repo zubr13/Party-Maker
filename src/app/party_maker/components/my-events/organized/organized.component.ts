@@ -29,7 +29,7 @@ export class OrganizedComponent implements OnInit {
   }
 
   toEvent(event) {
-    this.router.navigate(['/app', 'event', event.$key]);
+    this.router.navigate(['/app', 'event', event.$key, 'info']);
   }
 
 }
