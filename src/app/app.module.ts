@@ -8,7 +8,7 @@ import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {
   MdButtonModule, MdCardModule, MdCheckboxModule, MdIconModule, MdIconRegistry, MdInputModule, MdListModule,
-  MdSidenavModule, MdSliderModule, MdTabsModule
+  MdSidenavModule, MdSliderModule, MdTabsModule, MdGridTile, MdGridList
 } from "@angular/material";
 import { AngularFireModule } from "angularfire2";
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +25,7 @@ import { SearchComponent } from "./party_maker/components/search/search.componen
 import { LogoComponent } from './party_maker/components/logo/logo.component';
 import { EventParticipantsComponent } from './party_maker/components/event-participants/event-participants.component';
 import { EventsInfoComponent } from './party_maker/components/events-info/events-info.component';
+import { EventChatComponent } from './party_maker/components/event-chat/event-chat.component';
 
 const config = {
   apiKey: "AIzaSyB8ZSdRKa-a93cJL3QfUldbD_OifHMC24U",
@@ -48,7 +49,8 @@ const config = {
     CreateEventComponent,
     LogoComponent,
     EventParticipantsComponent,
-    EventsInfoComponent
+    EventsInfoComponent,
+    EventChatComponent
   ],
   imports: [
     BrowserModule,

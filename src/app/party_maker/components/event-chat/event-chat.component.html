@@ -1,0 +1,42 @@
+<nav md-tab-nav-bar *ngIf="eventId">
+  <a md-tab-link
+     [routerLink]="['/app', 'event', eventId, 'info']"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="rla.isActive">
+    Info
+  </a>
+  <a md-tab-link
+     [routerLink]="['/app', 'event', eventId, 'participants']"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="rla.isActive">
+    Participants
+  </a>
+  <a md-tab-link
+     [routerLink]="['/app', 'event', eventId, 'chat']"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="rla.isActive">
+    Chat
+  </a>
+</nav>
+<md-grid-list cols="1" gutterSize="4px" rowHeight="600px">
+  <md-grid-tile>
+    <md-card> 
+      <md-card-content>
+          <md-spinner *ngIf="messages" class="messages">
+            <md-card-header *ngFor="let message of messages" [ngClass]="{' align-right': message.owner}">
+              <img md-card-avatar [src]="message.userData.photoURL" />
+              <md-card-title>{{message.userData.displayName + ": " + message.message}}</md-card-title>
+              <md-card-subtitle>{{message.sendAt}}</md-card-subtitle>
+            </md-card-header>
+          </md-spinner>
+          
+      </md-card-content>
+      <md-card-actions class="position-message">
+        <md-input-container>
+          <textarea mdInput placeholder="Type your message:" value="Sushi" #message></textarea>
+        </md-input-container>
+        <button md-raised-button class="float-right" color="primary" (click)="sendMessage(message.value)">Send</button>
+      </md-card-actions>
+    </md-card>
+  </md-grid-tile>
+</md-grid-list>

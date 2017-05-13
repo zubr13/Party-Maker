@@ -1,0 +1,12 @@
+.messages{
+    display: flex;
+    flex-direction: column;
+}
+
+.align-right {
+    align-self: flex-end;
+}
+
+.message {
+    width: 300px;
+}
