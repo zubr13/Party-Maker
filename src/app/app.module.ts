@@ -1,4 +1,4 @@
-import { RouterModule, ActivatedRouteSnapshot } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { MyEventsModule } from './party_maker/components/my-events/my-events.module';
 import { ProfileComponent } from './party_maker/components/profile/profile.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -6,7 +6,10 @@ import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MdIconRegistry, MaterialModule } from "@angular/material";
+import {
+  MdButtonModule, MdCardModule, MdCheckboxModule, MdIconModule, MdIconRegistry, MdInputModule, MdListModule,
+  MdSidenavModule, MdSliderModule, MdTabsModule
+} from "@angular/material";
 import { AngularFireModule } from "angularfire2";
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from "./shared/shared.module";
@@ -20,6 +23,8 @@ import { PlaceOnMapComponent } from './party_maker/components/place-on-map/place
 import { CreateEventComponent } from './party_maker/components/create-event/create-event.component';
 import { SearchComponent } from "./party_maker/components/search/search.component";
 import { LogoComponent } from './party_maker/components/logo/logo.component';
+import { EventParticipantsComponent } from './party_maker/components/event-participants/event-participants.component';
+import { EventsInfoComponent } from './party_maker/components/events-info/events-info.component';
 
 const config = {
   apiKey: "AIzaSyB8ZSdRKa-a93cJL3QfUldbD_OifHMC24U",
@@ -41,7 +46,9 @@ const config = {
     SearchComponent,
     PlaceOnMapComponent,
     CreateEventComponent,
-    LogoComponent
+    LogoComponent,
+    EventParticipantsComponent,
+    EventsInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -49,12 +56,20 @@ const config = {
     ReactiveFormsModule,
     HttpModule,
     AppRoutingModule,
-    MaterialModule.forRoot(),
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(config),
     SharedModule,
     MyEventsModule,
-    RouterModule
+    MdButtonModule,
+    MdIconModule,
+    MdCheckboxModule,
+    MdSliderModule,
+    MdSidenavModule,
+    MdListModule,
+    MdCardModule,
+    MdInputModule,
+    RouterModule,
+    MdTabsModule
   ],
   providers: [
     MdIconRegistry

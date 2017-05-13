@@ -1,4 +1,4 @@
-import { MaterialModule } from '@angular/material';
+import {MdListModule, MdTabsModule} from '@angular/material';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 import { DatabaseService } from './../../../shared/serivces/database.service';
@@ -14,7 +14,8 @@ import { OrganizedComponent } from './organized/organized.component';
     CommonModule,
     RouterModule,
     AngularFireModule,
-    MaterialModule.forRoot()
+    MdTabsModule,
+    MdListModule,
   ],
   declarations: [
     MyEventsComponent,
