@@ -1,24 +1,24 @@
 import { AngularFireAuth } from 'angularfire2/auth';
 import { ActivatedRoute } from '@angular/router';
 import { DatabaseService } from './../../../shared/serivces/database.service';
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, ViewChild, AfterViewInit} from '@angular/core';
 
 @Component({
   selector: 'app-event-chat',
   templateUrl: './event-chat.component.html',
   styleUrls: ['./event-chat.component.scss']
 })
-export class EventChatComponent implements OnInit {
-
+export class EventChatComponent implements OnInit, AfterViewInit {
+  @ViewChild('main') public main;
+  @ViewChild('message') public message;
   @Input() eventId: string;
 
   public messages;
-
   constructor(
     private dbService: DatabaseService,
     private route: ActivatedRoute,
     private auth: AngularFireAuth
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.route.params.subscribe( params => {
@@ -38,13 +38,20 @@ export class EventChatComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit() {
+    this.main['nativeElement'].scrollTop = this.main['nativeElement'].scrollHeight;
+  }
+
   sendMessage(message) {
+    this.message['nativeElement'].value = '';
     this.dbService.pushDataToList(`chats/${this.eventId}`, {
       userData: this.auth.auth.currentUser.providerData[0],
       uid: this.auth.auth.currentUser.uid,
       message: message,
       timestamp: Date.now()
-    });
+    }).then(() => {
+      this.main['nativeElement'].scrollTop = this.main['nativeElement'].scrollHeight;
+    })
   }
 
 }

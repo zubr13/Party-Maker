@@ -18,25 +18,23 @@
     Chat
   </a>
 </nav>
-<md-grid-list cols="1" gutterSize="4px" rowHeight="600px">
-  <md-grid-tile>
-    <md-card> 
-      <md-card-content>
-          <md-spinner *ngIf="messages" class="messages">
-            <md-card-header *ngFor="let message of messages" [ngClass]="{' align-right': message.owner}">
-              <img md-card-avatar [src]="message.userData.photoURL" />
-              <md-card-title>{{message.userData.displayName + ": " + message.message}}</md-card-title>
-              <md-card-subtitle>{{message.sendAt}}</md-card-subtitle>
-            </md-card-header>
-          </md-spinner>
-          
-      </md-card-content>
-      <md-card-actions class="position-message">
-        <md-input-container>
-          <textarea mdInput placeholder="Type your message:" value="Sushi" #message></textarea>
-        </md-input-container>
-        <button md-raised-button class="float-right" color="primary" (click)="sendMessage(message.value)">Send</button>
-      </md-card-actions>
-    </md-card>
-  </md-grid-tile>
-</md-grid-list>
+<main #main>
+  <md-card *ngFor="let message of messages" [class.mine]="message.owner">
+    <md-card-header [ngClass]="{' align-right': message.owner}">
+      <img md-card-avatar [src]="message.userData.photoURL" />
+      <md-card-title>{{message.userData.displayName}}</md-card-title>
+      <md-card-subtitle>{{message.sendAt}}</md-card-subtitle>
+    </md-card-header>
+    <md-card-content>
+      <p>
+        {{message.message}}
+      </p>
+    </md-card-content>
+  </md-card>
+</main>
+<footer>
+  <md-input-container>
+    <textarea mdInput placeholder="Type your message:" #message></textarea>
+  </md-input-container>
+  <button md-raised-button class="float-right" color="primary" (click)="sendMessage(message.value)">Send</button>
+</footer>

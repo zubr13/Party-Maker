@@ -57,7 +57,7 @@
   </md-card>
   <md-card class="filter-map">
     <agm-map [latitude]="lat" [longitude]="lng">
-      <agm-marker *ngFor="let event of events" [latitude]="event.latitude"
+      <agm-marker *ngFor="let event of filteredEvents" [latitude]="event.latitude"
                   [longitude]="event.longtitude" [label]="'M'"
                   (markerClick)="goToEvent(event)">
       </agm-marker>
