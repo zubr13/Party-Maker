@@ -1,0 +1,5 @@
+<agm-map [latitude]="lat" [longitude]="lng">
+    <agm-marker *ngFor="let event of events" [latitude]="event.latitude" 
+                [longitude]="event.longtitude" [iconUrl]="event.imageUrl">
+    </agm-marker>
+</agm-map>

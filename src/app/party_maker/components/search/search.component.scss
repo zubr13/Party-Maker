@@ -1,0 +1,43 @@
+.search {
+  width: 300px;
+  color: #3c3c3c;
+  text-transform: uppercase;
+
+  &--section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &--sectionTitle {
+    font-size: 1.4em;
+    color: #008ca9;
+    margin-bottom: 5px;
+  }
+
+  &--checkbox {
+    margin: 5px 10px;
+  }
+}
+
+.searchTitle {
+  color: #9b9b9b;
+}
+
+.block {
+  display: block;
+}
+
+.inline {
+  display: inline;
+}
+
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.example-margin {
+  margin: 0 10px;
+}

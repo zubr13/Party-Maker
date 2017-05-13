@@ -1,0 +1,20 @@
+.main{
+  height: 100vh;
+
+  &--sidenav {
+    width: 100vw;
+    background-color: rgba(102, 51, 153, 0.95);
+  }
+
+  &--sidenavItem {
+    width: 100px;
+    height: 100px;
+  }
+
+  &--sidenavCall {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100000;
+  }
+}
