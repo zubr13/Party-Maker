@@ -6,8 +6,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build -prod -aot",
-    "predeploy": "npm run build",
     "hmr": "ng serve --hmr -e=hmr",
+    "predeploy": "npm run build",
     "deploy": "firebase deploy --only hosting",
     "deployFunctions": "firebase deploy --only functions",
     "predeployRules": "firebase-bolt ./rules/rules.bolt",
@@ -38,6 +38,7 @@
     "core-js": "^2.4.1",
     "firebase": "^3.9.0",
     "firebase-bolt": "^0.8.2",
+    "ng2-facebook-sdk": "^2.3.1",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"
   },

@@ -16,7 +16,7 @@
     ></canvas>
     <input id="file" #fileLoader type="file" name="image" value="Upload an image" accept="image/jpeg,image/png" (change)="getFile($event)">
   </div>
-  <form name='createEvent'>
+  <form class="form" name='createEvent'>
       <md-input-container>
         <input name="name" mdInput [(ngModel)]="event.name" placeholder="Name">
       </md-input-container>
@@ -37,9 +37,8 @@
     </md-select>
     <button (click)="onPlaceOnMap()" md-fab><i class="material-icons">add_location</i></button>
     <h4>Add location</h4>
-
     <button md-raised-button>Cancel</button>
-    <button md-raised-button (click)="onSave()">Save</button>
+    <button md-raised-button [color]="'warn'" (click)="onSave()">Save</button>
   </form>
 </md-card>
 <div *ngIf="placeOnMapMode">
