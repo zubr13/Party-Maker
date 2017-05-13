@@ -15,6 +15,7 @@ export class SearchComponent implements OnInit {
     longtitude: this.lng
   };
 
+  searchQuery = "Kitten's show";
   options = {
     time: null,
     duration: 0,

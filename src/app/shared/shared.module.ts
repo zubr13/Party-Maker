@@ -20,16 +20,18 @@ import { InteractiveMapComponent } from './components/interactive-map/interactiv
 import { DialogDirective } from "./directives/dialog.directive";
 import { AgmCoreModule, AgmMap, AgmMarker, AgmCircle } from "@agm/core";
 import { FormsModule } from '@angular/forms';
-import {MdIconModule} from '@angular/material';
+import {MdIconModule, MdProgressBarModule} from '@angular/material';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
     CanvasImageDirective,
     InteractiveMapComponent,
-    DialogDirective
+    DialogDirective,
+    LoaderComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +40,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     }),
     AngularFireAuthModule,
     FormsModule,
-    MdIconModule
+    MdIconModule,
+    MdProgressBarModule
   ],
   providers: [
     StorageService,
@@ -57,6 +60,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
   exports: [
     InteractiveMapComponent,
     CanvasImageDirective,
+    LoaderComponent,
     AgmMap,
     AgmMarker,
     AgmCircle
