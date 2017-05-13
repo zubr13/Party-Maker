@@ -8,6 +8,7 @@ import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {
   MdButtonModule, MdCardModule, MdCheckboxModule, MdIconModule, MdIconRegistry, MdInputModule, MdListModule,
+  MdSelectModule,
   MdSidenavModule, MdSliderModule, MdTabsModule
 } from "@angular/material";
 import { AngularFireModule } from "angularfire2";
@@ -64,6 +65,7 @@ const config = {
     MdIconModule,
     MdCheckboxModule,
     MdSliderModule,
+    MdSelectModule,
     MdSidenavModule,
     MdListModule,
     MdCardModule,
