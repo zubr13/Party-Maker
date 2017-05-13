@@ -2,6 +2,13 @@
   <div class="image-container" (click)="fileLoader.click()">
     <img  [src]="img || imageUrl || 'src/assets/default.jpg'" (load)="loadImg($event)">
     <canvas appCanvasImage
+            width="250"
+            [config]="{quality: 1, saveRatio: false, jpeg : true}"
+            [img]="file"
+            (onImageMinificationDone)="minifiedImage($event)"
+    ></canvas>
+    <canvas appCanvasImage
+            width="50"
             [config]="{quality: 1, saveRatio: false, jpeg : true}"
             [img]="file"
             (onImageMinificationDone)="minifiedImage($event)"
