@@ -1,40 +1,13 @@
-<nav md-tab-nav-bar *ngIf="eventId">
-  <a md-tab-link
-     [routerLink]="['/app', 'event', eventId, 'info']"
-     routerLinkActive #rla="routerLinkActive"
-     [active]="rla.isActive">
-    Info
-  </a>
-  <a md-tab-link
-     [routerLink]="['/app', 'event', eventId, 'participants']"
-     routerLinkActive #rla="routerLinkActive"
-     [active]="rla.isActive">
-    Participants
-  </a>
-  <a md-tab-link
-     [routerLink]="['/app', 'event', eventId, 'chat']"
-     routerLinkActive #rla="routerLinkActive"
-     [active]="rla.isActive">
-    Chat
-  </a>
-</nav>
 <md-card class="example-card" *ngIf="event">
   <md-card-header>
     <div md-card-avatar class="example-header-image"></div>
     <md-card-title>{{event.name}}</md-card-title>
   </md-card-header>
-  <img md-card-image src="https://angular.io/resources/images/logos/angular/angular.svg">
+  <img md-card-image [src]="event.image || 'https://angular.io/resources/images/logos/angular/angular.svg'">
   <md-card-content>
     <p>
       {{event.description}}
     </p>
   </md-card-content>
-  <md-card-actions *ngIf="!isUserParticipated">
-    <button md-button (click)="participate()">Participate</button>
-  </md-card-actions>
-  <md-card-content *ngIf="isUserParticipated">
-    <p>
-      You are participated!
-    </p>
-  </md-card-content>
+  <md-checkbox class="example-margin" [(ngModel)]="isUserParticipated">Participate</md-checkbox>
 </md-card>
