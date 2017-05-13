@@ -58,11 +58,13 @@
                   [longitude]="event.longtitude" [label]="'M'" 
                   (markerClick)="goToEvent(event)">
       </agm-marker>
-      <agm-circle [latitude]="lat" [longitude]="lng" 
+      <agm-circle [latitude]="center.latitude" [longitude]="center.longtitude" 
           [radius]="options.radius"
           [fillColor]="'red'"
           [circleDraggable]="true"
-          [editable]="true">
+          [editable]="true"
+          (radiusChange)="onRadiusChange($event)"
+          (centerChange)="onCenterChange($event)">
       </agm-circle>
   </agm-map>
   </md-card>
