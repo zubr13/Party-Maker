@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
+  searchQuery = "Kitten's show";
   options = {
     time: null,
     duration: 0,

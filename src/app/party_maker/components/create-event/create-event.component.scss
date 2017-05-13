@@ -1,3 +1,10 @@
+.createEventContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .create-event {
     margin: 40px;
     display: flex;

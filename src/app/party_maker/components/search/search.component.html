@@ -1,6 +1,10 @@
 <div class="filter-events">
   <md-card class="search">
-    <md-card-title class="searchTitle">ADVANCED SEARCH</md-card-title>
+    <md-card-title class="searchTitle">
+      <md-input-container>
+        <input mdInput placeholder="Event name" value="Kitten's show" [(ngModel)]="searchQuery">
+      </md-input-container>
+    </md-card-title>
 
     <md-card-content>
       <section class="search--section">
@@ -54,8 +58,8 @@
   </md-card>
   <md-card>
     <agm-map [latitude]="lat" [longitude]="lng">
-      <agm-marker *ngFor="let event of events" [latitude]="event.latitude" 
-                  [longitude]="event.longtitude" [label]="'M'" 
+      <agm-marker *ngFor="let event of events" [latitude]="event.latitude"
+                  [longitude]="event.longtitude" [label]="'M'"
                   (markerClick)="goToEvent(event)">
       </agm-marker>
   </agm-map>
