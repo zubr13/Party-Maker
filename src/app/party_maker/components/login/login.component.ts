@@ -1,3 +1,4 @@
+import { AuthService } from './../../../shared/serivces/auth.service';
 import { TwitterAuth } from './../../../shared/serivces/authMethods';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { GithubAuth } from './../../../shared/serivces/authMethods';
@@ -24,7 +25,8 @@ export class LoginComponent implements OnInit {
     private githubAuth: GithubAuth,
     private twitterAuth: TwitterAuth,
     private auth: AngularFireAuth,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -44,7 +46,11 @@ export class LoginComponent implements OnInit {
   }
 
   facebookLogin(){
-    this.facebookAuth.login().then(() => this.router.navigate(['/app/profile']));
+    this.facebookAuth.login().then((data) => {
+      this.authService.facebookToken = data.credential.accessToken;
+      localStorage.setItem('facebookToken', this.authService.facebookToken);
+      this.router.navigate(['/app/profile']);
+    });
   }
 
   githubLogin(){

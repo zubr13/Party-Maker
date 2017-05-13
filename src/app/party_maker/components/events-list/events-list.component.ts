@@ -7,7 +7,7 @@ import {DatabaseService} from "../../../shared/serivces/database.service";
   styleUrls: ['./events-list.component.scss']
 })
 export class EventsListComponent {
-  private events: Array<Object>;
+  public events: Array<Object>;
   constructor(private db: DatabaseService) {
     this.db.getList('events').first().subscribe(d => this.events = d);
   }

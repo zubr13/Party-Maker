@@ -9,7 +9,7 @@ import {AuthService} from "../../../shared/serivces/auth.service";
 })
 export class MainComponent implements OnInit {
   @ViewChild('sidenav') private sidenav;
-  private routes: Array<Object>;
+  public routes: Array<Object>;
   constructor(
       private router: Router,
       private route: ActivatedRoute,

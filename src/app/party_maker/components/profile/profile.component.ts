@@ -11,20 +11,26 @@ export class ProfileComponent implements OnInit {
 
   public currentUser;
 
-  constructor(private authService: AuthService, private fbAuth: AngularFireAuth, private fb: FacebookService) { }
+  constructor(
+    private authService: AuthService,
+    private fbAuth: AngularFireAuth, 
+    private fb: FacebookService) { }
 
   ngOnInit() {
     this.currentUser = this.fbAuth.auth.currentUser;
-    console.log(this.currentUser);
+    console.log(this.fbAuth.auth.currentUser);
     this.fb.init({
       appId: '1955507991402224',
       version: 'v2.9'
+    }).then( data => {
+      console.log(data);
     });
+    // console.log(this.fb.getAuthResponse().);
     this.getFriends();
   }
 
   getFriends() {
-    this.fb.api('/me/friends?accessToken=EAACEdEose0cBAKvFcd6jZBFrD9HoCwduvh7SymLzMmWcs0RHSW7ZBUgj5JPiz2kHwaZBr5ksZAGJn6UskQZADpo9YlZABZBoKSdJRq15HWYryRSJs8SFVx6UHh3Gu1f2gJHA5DskUmuffZCBEgOgIaZCfbd8ZBRd6soAuGqxzmmjZAPA44TUlUsqh6lOp1qZAZCAGtQMZD')
+    this.fb.api(`/search?q=Kyiv&type=event&access_token=${this.authService.facebookToken}`)
       .then((res: any) => {
         console.log('Got the users friends', res);
       })
