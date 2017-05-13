@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from './../../../shared/serivces/database.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-search',
@@ -42,7 +43,7 @@ export class SearchComponent implements OnInit {
     data: null
   };
 
-  constructor(private db: DatabaseService) {}
+  constructor(private db: DatabaseService, private router: Router) {}
 
   ngOnInit() {
     this.db.getList('events')
@@ -82,6 +83,10 @@ export class SearchComponent implements OnInit {
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     const d = R * c;
     return d;
+  }
+
+  goToEvent (event) {
+    this.router.navigate(['/app', 'event', event.$key, 'info']);
   }
 
 }
