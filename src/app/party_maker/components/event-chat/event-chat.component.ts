@@ -1,7 +1,7 @@
 import { AngularFireAuth } from 'angularfire2/auth';
 import { ActivatedRoute } from '@angular/router';
 import { DatabaseService } from './../../../shared/serivces/database.service';
-import {Component, OnInit, Input, ViewChild, AfterViewInit} from '@angular/core';
+import { Component, OnInit, Input, ViewChild, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-event-chat',

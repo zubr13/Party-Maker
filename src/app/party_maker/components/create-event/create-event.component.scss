@@ -1,8 +1,12 @@
+:host {
+    overflow: hidden;
+}
+
 .createEventContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .create-event {
@@ -11,10 +15,21 @@
     flex-direction: column;
 }
 
+.form {
+    md-input-container {
+        width: 100%;
+    }
+
+    md-select {
+        width: 80%;
+    }
+}
+
 .image-container {
     width: 200px;
     height: 200px;
     position: relative;
+    margin: auto;
 }
 
 #file {
