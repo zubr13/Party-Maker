@@ -3,12 +3,35 @@
 
   &--sidenav {
     width: 100vw;
-    background-color: rgba(102, 51, 153, 0.95);
+    max-width: 400px;
+    background-color: rgba(255, 255, 255, 0.95);
   }
 
   &--sidenavItem {
-    width: 100px;
-    height: 100px;
+    cursor: pointer;
+    font-family: 'Josefin Sans', serif;
+    text-transform: uppercase;
+    color: #3b3b3b;
+    font-size: 30px;
+    height: 70px;
+    margin: 20px 0;
+
+    &:after {
+      width: 0;
+      content: '';
+      display: block;
+      height: 3px;
+      opacity: .5;
+      transition: all 1s ease-in-out;
+      background: #008ca9;
+    }
+
+    &:hover {
+      &:after {
+        width: 90%;
+        transition: all 1s ease-in-out;
+      }
+    }
   }
 
   &--sidenavCall {
