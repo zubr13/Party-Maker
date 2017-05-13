@@ -1,16 +1,9 @@
-<nav md-tab-nav-bar>
-  <a md-tab-link
-     [routerLink]="['participated']"
-     routerLinkActive #rla="routerLinkActive"
-     [active]="rla.isActive">
-    Participated
-  </a>
-  <a md-tab-link
-     [routerLink]="['organized']"
-     routerLinkActive #rla="routerLinkActive"
-     [active]="rla.isActive">
-    Organized
-  </a>
-</nav>
-
+<md-tab-group>
+  <md-tab label="Participated">
+    <app-participated></app-participated>
+  </md-tab>
+  <md-tab label="Organized">
+    <app-organized></app-organized>
+  </md-tab>
+</md-tab-group>
 <router-outlet></router-outlet>

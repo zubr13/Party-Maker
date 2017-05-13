@@ -7,12 +7,12 @@
                     *ngFor="let item of routes"
                     (click)="goTo(item.path)"
                     routerLinkActive="active">{{item.name}}</md-list-item>
-            <md-list-item class='main--sidenavItem' md-raised-button
-                    (click)="logout()">Logout</md-list-item>
+            <md-list-item class='main--sidenavItem' md-raised-button (click)="logout()">Logout</md-list-item>
         </md-list>
     </md-sidenav>
-    <button md-mini-fab class='main--sidenavCall' (click)="sidenav.toggle()">
-        <md-icon>list</md-icon>
-    </button>
+    <md-toolbar [color]="'primary'">
+        <md-icon (click)="sidenav.toggle()">list</md-icon>
+    </md-toolbar>
+
     <router-outlet></router-outlet>
 </md-sidenav-container>

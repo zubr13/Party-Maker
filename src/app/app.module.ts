@@ -10,7 +10,7 @@ import {
   MdButtonModule, MdCardModule, MdCheckboxModule, MdGridListModule, MdIconModule, MdIconRegistry,
   MdInputModule, MdListModule,
   MdSelectModule,
-  MdSidenavModule, MdSliderModule, MdTabsModule
+  MdSidenavModule, MdSliderModule, MdTabsModule, MdToolbarModule
 } from "@angular/material";
 import { AngularFireModule } from "angularfire2";
 import { AppRoutingModule } from './app-routing.module';
@@ -70,6 +70,7 @@ const config = {
     MdIconModule,
     MdCheckboxModule,
     MdSliderModule,
+    MdToolbarModule,
     MdGridListModule,
     MdSelectModule,
     MdTabsModule,

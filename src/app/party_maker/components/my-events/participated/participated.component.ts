@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { DatabaseService } from './../../../../shared/serivces/database.service';
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-participated',
@@ -15,17 +15,13 @@ export class ParticipatedComponent implements OnInit{
   constructor(private dbService: DatabaseService, private auth: AngularFireAuth, private router: Router) { }
 
   ngOnInit() {
-    this.dbService.getList('userEvents', {
-      orderByKey: true,
-      equalTo: this.auth.auth.currentUser.uid
-    }).subscribe( data => {
-      let events = [];
-      Object.keys(data).map( key => {
-        event[key]['eventId'] = key;
-        events.push(event[key]);
-      });
-      this.events = events;
-    });
+    this.dbService.getList(`userEvents/${this.auth.auth.currentUser.uid}`)
+        .first()
+        .subscribe( data => this.events = data);
+  }
+
+  loadImg($event) {
+    $event.currentTarget.style.opacity = 1;
   }
 
   toEvent(event) {
