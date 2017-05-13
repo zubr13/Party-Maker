@@ -47,6 +47,18 @@ const routes: Routes = [
         component: EventComponent
       },
       {
+        path: 'participated',
+        component: ParticipatedComponent
+      },
+      {
+        path: 'organized',
+        component: OrganizedComponent
+      },
+      {
+        path: 'organized',
+        component: OrganizedComponent
+      },
+      {
         path: 'create',
         component: CreateEventComponent,
         data: {

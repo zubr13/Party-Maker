@@ -19,7 +19,7 @@ export class SearchComponent implements OnInit {
     longtitude: this.lng
   };
 
-  searchQuery = "Kitten's show";
+  searchQuery = "";
   options = {
     time: null,
     duration: 0,
@@ -76,6 +76,16 @@ export class SearchComponent implements OnInit {
       });
   }
 
+  onQueryChange() {
+    this.filteredEvents = this.events.filter(
+      (event) => event.name.indexOf(this.searchQuery) !== -1);
+  }
+
+  onPriceChange() {
+    this.filteredEvents = this.events.filter(
+      (event) => event.price <= this.options.price);
+  }
+
   onRadiusChange (event) {
     this.options.radius = event;
     this.filterEvents();
@@ -96,6 +106,7 @@ export class SearchComponent implements OnInit {
   rad (x) {
     return x * Math.PI / 180;
   }
+
   getDistance (lon1, lon2, lat1, lat2) {
     const R = 6378137;
     const dLat = this.rad(lat2 - lat1);
