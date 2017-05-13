@@ -17,12 +17,20 @@
     margin: 20px 0;
 
     &:after {
-      width: 100%;
+      width: 3%;
       content: '';
       display: block;
       height: 3px;
       opacity: .5;
+      transition: all 1s ease-in-out;
       background: #008ca9;
+    }
+
+    &:hover {
+      &:after {
+        width: 90%;
+        transition: all 1s ease-in-out;
+      }
     }
   }
 
