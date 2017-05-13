@@ -22,7 +22,7 @@ export class InteractiveMapComponent implements OnInit {
   }
 
   goToEvent (event) {
-    this.router.navigate(['app', 'event', event.$key]);
+    this.router.navigate(['/app', 'event', event.$key, 'info']);
   }
 
 }
