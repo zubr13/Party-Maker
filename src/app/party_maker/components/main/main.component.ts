@@ -38,6 +38,6 @@ export class MainComponent implements OnInit {
   logout() {
     this.authService.logout()
         .first()
-        .subscribe(() => this.router.navigate(['/logout']));
+        .subscribe(() => this.router.navigate(['/login']));
   }
 }
