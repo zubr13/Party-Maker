@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StorageService } from './../../../shared/serivces/storage.service'; 
+import { DatabaseService } from './../../../shared/serivces/database.service'; 
 
 @Component({
   selector: 'app-interactive-map',
@@ -11,20 +11,13 @@ export class InteractiveMapComponent implements OnInit {
   lng = 30.5238;
   events: any;
 
-  constructor(private storageService: StorageService) { }
+  constructor(private db: DatabaseService) { }
 
   ngOnInit() {
-    this.events = [{
-      $key: '1.jpg',
-      latitude: 50.45466,
-      longtitude: 30.5238
-    }];
-    for (let event of this.events) {
-       this.storageService.getImage(`events/${event.$key}`)
-        .subscribe((data) => {
-          event.imageUrl = data;
-        });
-    }
+    this.db.getList('events')
+      .subscribe((events) => {
+        this.events = events;
+      });
   }
 
 }
