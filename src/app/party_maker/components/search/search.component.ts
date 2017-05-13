@@ -10,6 +10,10 @@ export class SearchComponent implements OnInit {
   events = [];
   lat = 50.45466;
   lng = 30.5238;
+  center = {
+    latitude: this.lat,
+    longtitude: this.lng
+  };
 
   searchQuery = "Kitten's show";
   options = {
@@ -33,7 +37,7 @@ export class SearchComponent implements OnInit {
         isFree: false,
         value: 2
     },
-    radius: 0
+    radius: 500
   };
 
   constructor(private db: DatabaseService) {}
@@ -43,6 +47,15 @@ export class SearchComponent implements OnInit {
       .subscribe((events) => {
         this.events = events;
       });
+  }
+
+  onRadiusChange (event) {
+    this.options.radius = event;
+  }
+
+  onCenterChange (event) {
+    this.center.latitude = event.lat;
+    this.center.longtitude = event.lng;
   }
 
 }
