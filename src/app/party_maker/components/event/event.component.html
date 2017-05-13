@@ -1,15 +1,14 @@
-<nav md-tab-nav-bar>
+<nav md-tab-nav-bar *ngIf="eventId">
   <a md-tab-link
-     [routerLink]="['info']"
+     [routerLink]="['/app', 'event', eventId, 'info']"
      routerLinkActive #rla="routerLinkActive"
      [active]="rla.isActive">
     Info
   </a>
   <a md-tab-link
-     [routerLink]="['participants']"
+     [routerLink]="['/app', 'event', eventId, 'participants']"
      routerLinkActive #rla="routerLinkActive"
      [active]="rla.isActive">
     Participants
   </a>
 </nav>
-<router-outlet></router-outlet>

@@ -66,6 +66,6 @@ export class CanvasImageDirective implements OnChanges, AfterViewInit {
         for (var i = 0; i < byteString.length; i++) {
             ia[i] = byteString.charCodeAt(i);
         }
-        this.onImageMinificationDone.emit({base64 : dataURI, blob: new Blob([ia], {type:mimeString})});
+        this.onImageMinificationDone.emit({base64 : dataURI, blob: new Blob([ia], {type:mimeString}), width: nEl.width});
     }
 }

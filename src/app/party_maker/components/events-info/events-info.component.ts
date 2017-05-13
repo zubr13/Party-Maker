@@ -42,7 +42,7 @@ export class EventsInfoComponent implements OnInit {
 
   participate() {
     this.dbService.pushDataToList(`userEvents/${this.auth.auth.currentUser.uid}`, this.event)
-    .then( () => this.dbService.pushDataToList(`eventsParticipants/${this.eventId}`, this.auth.auth.currentUser.providerData))
+    .then( () => this.dbService.pushDataToList(`eventsParticipants/${this.eventId}`, this.auth.auth.currentUser.providerData[0]))
     .then( () => this.isUserParticipated = true);
   }
 

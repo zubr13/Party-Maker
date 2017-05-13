@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { DatabaseService } from './../../../shared/serivces/database.service';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-event-participants',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventParticipantsComponent implements OnInit {
 
-  constructor() { }
+  @Input() eventId: string;
+
+  public users;
+
+  constructor(private dbService: DatabaseService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.params.subscribe( params => {
+      if(params['id']) {
+        this.eventId = params['id'];
+      }
+      this.dbService.getList(`eventsParticipants/${this.eventId}`).subscribe( users => {
+        this.users = users;
+      });
+    });
   }
 
 }
