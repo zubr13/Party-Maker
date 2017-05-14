@@ -18,6 +18,8 @@ export class EventsInfoComponent implements OnInit {
 
   public isUserParticipated = false;
 
+  public isFacebookEvent = false;
+
   constructor(private dbService: DatabaseService, private route: ActivatedRoute, private auth: AngularFireAuth,
               private fb: FacebookService, private authService: AuthService, private passD: PassDataService) { }
 
@@ -40,6 +42,7 @@ export class EventsInfoComponent implements OnInit {
             event.eventId = this.eventId;
             this.event = event;
             if (+this.eventId) {
+              this.isFacebookEvent = true;
               this.fb.init({
                 appId: '1955507991402224',
                 version: 'v2.9'
@@ -68,9 +71,16 @@ export class EventsInfoComponent implements OnInit {
   }
 
   participate() {
-    this.dbService.pushDataToList(`userEvents/${this.auth.auth.currentUser.uid}`, this.event)
-    .then( () => this.dbService.pushDataToList(`eventsParticipants/${this.eventId}`, this.auth.auth.currentUser.providerData[0]))
-    .then( () => this.isUserParticipated = true);
+    if(this.isFacebookEvent){
+      console.log(`/${this.eventId}/attending?access_token=${this.authService.facebookToken}`, 'post');
+      this.fb.api(`/${this.eventId}/attending?access_token=${this.authService.facebookToken}`, "post")
+      .then(data => console.log(data))
+      .then( () => this.dbService.pushDataToList(`eventsParticipants/${this.eventId}`, this.auth.auth.currentUser.providerData[0]))
+      .then( () => this.isUserParticipated = true);
+    } else {
+      this.dbService.pushDataToList(`userEvents/${this.auth.auth.currentUser.uid}`, this.event)
+      .then( () => this.dbService.pushDataToList(`eventsParticipants/${this.eventId}`, this.auth.auth.currentUser.providerData[0]))
+      .then( () => this.isUserParticipated = true);
+    }
   }
-
 }

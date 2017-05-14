@@ -34,9 +34,10 @@ export class ParticipatedComponent implements OnInit{
     }).subscribe( data => {
       let events = [];
       Object.keys(data).map( key => {
-        event[key]['eventId'] = key;
-        events.push(event[key]);
+        data[key]['eventId'] = key;
+        events.push(data[key]);
       });
+      this.events = [];
       this.events.concat(events);
     });
   }
