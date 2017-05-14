@@ -12,8 +12,8 @@ import {AuthService} from './../../../shared/serivces/auth.service';
 export class SearchComponent implements OnInit {
   events = [];
   filteredEvents = [];
-  lat = 50.45466;
-  lng = 30.5238;
+  lat: any;
+  lng: any;
   center = {
     latitude: this.lat,
     longtitude: this.lng
@@ -49,6 +49,10 @@ export class SearchComponent implements OnInit {
               private authService: AuthService) {}
 
   ngOnInit() {
+    navigator.geolocation.getCurrentPosition(position => {
+      this.lat = position.coords.latitude;
+      this.lng = position.coords.longitude;
+    });
     this.db.getList('events')
       .subscribe((events) => {
         this.events = events;
