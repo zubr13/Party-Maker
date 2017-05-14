@@ -11,7 +11,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {
   MdButtonModule, MdCardModule, MdCheckboxModule, MdGridListModule, MdIconModule, MdIconRegistry,
   MdInputModule, MdListModule,
-  MdSelectModule,
+  MdSelectModule, MdSlideToggleModule,
   MdSidenavModule, MdSliderModule, MdTabsModule, MdToolbarModule
 } from "@angular/material";
 import { AngularFireModule } from "angularfire2";
@@ -79,6 +79,7 @@ const config = {
     MdGridListModule,
     MdSelectModule,
     MdTabsModule,
+    MdSlideToggleModule,
     MdSidenavModule,
     MdListModule,
     MdCardModule,
