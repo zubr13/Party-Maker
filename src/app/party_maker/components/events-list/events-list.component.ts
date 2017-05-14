@@ -15,4 +15,5 @@ export class EventsListComponent {
   loadImg($event) {
     $event.currentTarget.style.opacity = 1;
   }
+
 }
