@@ -1,0 +1,12 @@
+<md-card class="example-card" *ngIf="article && articleInfo">
+  <md-card-header>
+    <div md-card-avatar class="example-header-image"></div>
+    <md-card-title>{{article.title}}</md-card-title>
+  </md-card-header>
+  <img class="event-image" md-card-image [src]="articleInfo.image || '/assets/default-event.png'">
+  <md-card-content>
+    <p>
+      Read more: <a [href]="article.fullurl">{{article.title}}</a>
+    </p>
+  </md-card-content>
+</md-card>

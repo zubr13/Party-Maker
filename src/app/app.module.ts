@@ -33,6 +33,7 @@ import { EventsListComponent } from './party_maker/components/events-list/events
 
 import { FacebookModule, FacebookService } from 'ng2-facebook-sdk';
 import { SightsComponent } from './party_maker/components/sights/sights.component';
+import { WikiArticleComponent } from './party_maker/components/wiki-article/wiki-article.component';
 
 const config = {
   apiKey: "AIzaSyB8ZSdRKa-a93cJL3QfUldbD_OifHMC24U",
@@ -60,7 +61,8 @@ const config = {
     EventParticipantsComponent,
     EventsInfoComponent,
     EventsListComponent,
-    SightsComponent
+    SightsComponent,
+    WikiArticleComponent
   ],
   imports: [
     BrowserModule,
