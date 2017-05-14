@@ -23,6 +23,11 @@ export class FacebookAppService {
     }
 
     searchEvents(query: Object, recursionLimit: number) {
+        console.group('Request to facebook api'.toUpperCase());
+        console.info('query=', query);
+        console.log('recursionLimit=', recursionLimit);
+        console.groupEnd();
+
         const stringify = obj => Object.keys(obj).reduce((acc, key) => acc += `${key}=${obj[key]}&`, '');
 
         const subject: ReplaySubject<any> = new ReplaySubject();
@@ -35,10 +40,8 @@ export class FacebookAppService {
                 const request = (d = fbEvents['paging']['next']) => this.fb.api(d)
                     .then(data => {
                         if (!data.paging || !data['paging']['next'] || counter > recursionLimit) {
-                            console.log('done');
                             subject.complete();
                         } else {
-                            console.log(data);
                             subject.next(data.data);
                             ++counter;
                             request(data.paging.next);
