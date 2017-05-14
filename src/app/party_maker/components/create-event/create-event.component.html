@@ -1,0 +1,49 @@
+<app-loader [style.opacity]="isLoading ? 1 : 0" [style.zIndex]="isLoading ? 1000000 : -1"></app-loader>
+<md-card *ngIf="!placeOnMapMode">
+  <div class="image-container" (click)="fileLoader.click()">
+    <img  [src]="img || imageUrl || 'src/assets/default.jpg'" (load)="loadImg($event)">
+    <canvas appCanvasImage
+            width="250"
+            [config]="{quality: 1, saveRatio: true, jpeg : true}"
+            [img]="file"
+            (onImageMinificationDone)="minifiedImage($event)"
+    ></canvas>
+    <canvas appCanvasImage
+            width="50"
+            [config]="{quality: 1, saveRatio: true, jpeg : true}"
+            [img]="file"
+            (onImageMinificationDone)="minifiedImage($event)"
+    ></canvas>
+    <input id="file" #fileLoader type="file" name="image" value="Upload an image" accept="image/jpeg,image/png" (change)="getFile($event)">
+  </div>
+  <form class="form" name='createEvent'>
+      <md-input-container>
+        <input name="name" mdInput [(ngModel)]="event.name" placeholder="Name">
+      </md-input-container>
+    <p>
+      <md-input-container>
+        <input name="description" mdInput [(ngModel)]="event.description" placeholder="Description">
+      </md-input-container>
+    </p>
+    <p>
+      <md-input-container>
+        <input name="price" mdInput [(ngModel)]="event.price" placeholder="Price">
+      </md-input-container>
+    </p>
+    <md-select *ngIf="categories"
+               [placeholder]="'Category'"
+               (change)="categoryChange($event.value)">
+      <md-option *ngFor="let category of categories" [value]="category">{{category}}</md-option>
+    </md-select>
+    <button (click)="onPlaceOnMap()" md-fab><i class="material-icons">add_location</i></button>
+    <h4>Add location</h4>
+    <button md-raised-button>Cancel</button>
+    <button md-raised-button [color]="'warn'" (click)="onSave()">Save</button>
+  </form>
+</md-card>
+<div *ngIf="placeOnMapMode">
+  <app-place-on-map [event]="event"></app-place-on-map>
+  <p>
+    <button md-raised-button (click)="onPlaceSave()">Save</button>
+  </p>
+</div>

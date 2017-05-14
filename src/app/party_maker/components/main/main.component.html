@@ -1,0 +1,19 @@
+<md-sidenav-container class="main">
+    <md-sidenav class ='main--sidenav' #sidenav [mode]="'over'">
+        <app-logo></app-logo>
+        <md-list>
+            <md-list-item md-raised-button
+                    class='main--sidenavItem'
+                    *ngFor="let item of routes"
+                    (click)="goTo(item.path)"
+                    routerLinkActive="active">{{item.name}}</md-list-item>
+            <md-list-item class='main--sidenavItem' md-raised-button (click)="logout()">Logout</md-list-item>
+        </md-list>
+    </md-sidenav>
+    <md-toolbar style="background-color: #008ca9">
+        <a class="menu" style="color: white" (click)="sidenav.toggle()">MENU</a>
+        <h2 class="title">{{title}}</h2>
+    </md-toolbar>
+
+    <router-outlet></router-outlet>
+</md-sidenav-container>

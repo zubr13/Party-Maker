@@ -1,0 +1,6 @@
+<md-list *ngIf="users">
+  <md-list-item *ngFor="let user of users" (click)="toEvent(event)">
+    <img md-list-avatar [src]="user.photoURL" >
+    <h3 md-line> {{user.displayName}} </h3>
+  </md-list-item>
+</md-list>

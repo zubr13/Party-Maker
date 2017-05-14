@@ -1,0 +1,10 @@
+<md-list *ngIf="events">
+  <md-list-item *ngFor="let event of events" (click)="toEvent(event)">
+    <img md-list-avatar [src]="event.icon" (load)="loadImg($event)">
+    <h3 md-line> {{event.name}} </h3>
+    <p md-line>
+      <span> {{event.price}} </span>
+      <span class="demo-2"> -- </span>
+    </p>
+  </md-list-item>
+</md-list>

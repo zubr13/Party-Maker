@@ -1,0 +1,59 @@
+:host {
+    overflow: hidden;
+}
+
+.createEventContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-event {
+    margin: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form {
+    md-input-container {
+        width: 100%;
+    }
+
+    md-select {
+        width: 80%;
+    }
+}
+
+.image-container {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    margin: auto;
+}
+
+#file {
+    display: none;
+}
+
+md-card {
+  height: 88%;
+}
+
+canvas {
+    border-radius: 5px;
+    transition: opacity .5s ease-out;
+    margin: 10px;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+img {
+    width: 100%;
+    height:100%;
+    border-radius: 100%;
+    margin:  auto;
+}
