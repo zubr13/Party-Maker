@@ -25,8 +25,8 @@ export class AuthService {
     return Observable.fromPromise(this.Auth.auth.signOut() as Promise<any>);
   }
 
-  authStatus() : Observable<any> {
-    return this.Auth.authState.map(auth => auth);
+  authStatus() : Observable<boolean> {
+    return this.Auth.authState.map(auth => !!auth).first();
   }
 
 }

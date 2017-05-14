@@ -1,6 +1,6 @@
 <md-card class="example-card" *ngIf="event">
   <md-card-header>
-    <div md-card-avatar class="example-header-image"></div>
+    <a md-fab><p>&#8372; {{event.price | date: 'hh:mm'}}</p></a>
     <md-card-title>{{event.name || event.title}}</md-card-title>
   </md-card-header>
   <img class="event-image" md-card-image [src]="event.image || '/assets/default-event.png'">
@@ -9,5 +9,5 @@
       {{event.description}}
     </p>
   </md-card-content>
-  <button md-button class="example-margin" *ngIf="!isUserParticipated" (click)="participate()">Participate</button>
+  <md-checkbox md-button class="example-margin" *ngIf="!isUserParticipated" (click)="participate()">Participate</md-checkbox>
 </md-card>
