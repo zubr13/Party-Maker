@@ -2,6 +2,9 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { ActivatedRoute } from '@angular/router';
 import { DatabaseService } from './../../../shared/serivces/database.service';
 import { Component, OnInit, Input } from '@angular/core';
+import {FacebookService} from 'ng2-facebook-sdk';
+import {AuthService} from './../../../shared/serivces/auth.service';
+
 @Component({
   selector: 'app-events-info',
   templateUrl: './events-info.component.html',
@@ -14,18 +17,28 @@ export class EventsInfoComponent implements OnInit {
 
   public isUserParticipated = false;
 
-  constructor(private dbService: DatabaseService, private route: ActivatedRoute, private auth: AngularFireAuth) { }
+  constructor(private dbService: DatabaseService, private route: ActivatedRoute, private auth: AngularFireAuth,
+              private fb: FacebookService, private authService: AuthService) { }
 
   ngOnInit() {
     this.route.params.subscribe( params => {
       if(params['id']){
         this.eventId = params['id'];
       }
-      console.log(params);
       this.dbService.getValue(`events/${this.eventId}`).map( event => {
         event.eventId = this.eventId;
         this.event = event;
-        console.log(event);
+        if (+this.eventId) {
+          this.fb.init({
+            appId: '1955507991402224',
+            version: 'v2.9'
+          });
+          this.fb.api(`/${this.eventId}?access_token=${this.authService.facebookToken}`)
+            .then((fbEvent) => {
+              this.event = fbEvent;
+            })
+            .catch(error => console.log(error));
+        }
         return event;
       }).subscribe( event => {
         this.dbService.getList(`userEvents/${this.auth.auth.currentUser.uid}`, {
