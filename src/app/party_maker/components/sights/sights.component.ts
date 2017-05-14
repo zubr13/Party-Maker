@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import {Router} from "@angular/router";
+import {PassDataService} from "../../../shared/serivces/pass-data.service";
 
 @Component({
   selector: 'app-sights',
@@ -13,7 +14,8 @@ export class SightsComponent implements OnInit {
   private events: Array<Object>;
   constructor(
       private http: Http,
-      private router: Router
+      private router: Router,
+      private passD: PassDataService
   ) { }
 
   ngOnInit() {
@@ -25,17 +27,24 @@ export class SightsComponent implements OnInit {
             .map(pages => Object.keys(pages).map(k => pages[k]))
             .map(sights => sights.map(sight => {
                 const {lat, lon} = sight.coordinates[0];
-                return Object.assign(sight, { latitude: lat, longtitude: lon })
+                // img: sight.thumbnail.source
+                return Object.assign(sight, {
+                    index: sight.index,
+                    title: sight.title,
+                    latitude: lat,
+                    longtitude: lon,
+                    image: sight.thumbnail ? sight.thumbnail.source : '',
+                    description: sight.terms ? sight.terms.description : ''
+                })
             }))
-            .subscribe(data => {
-                this.events = data;
-                console.log(this.events);
-            });
+            .subscribe(data => this.events = data);
     });
   }
 
     goToEvent (event) {
-        this.router.navigate(['/app', 'event', event.index]);
+      console.log(event);
+        this.passD.subject.next(event);
+        this.router.navigate(['/app', 'event', event.index], { queryParams: { type: 'wiki' }});
     }
 
 

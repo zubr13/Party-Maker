@@ -26,6 +26,7 @@ import { HttpModule }    from '@angular/http';
 
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { LoaderComponent } from './components/loader/loader.component';
+import { PassDataService } from "./serivces/pass-data.service";
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     FacebookAuth,
     GithubAuth,
     TwitterAuth,
+    PassDataService,
     VkAuth,
     DatabaseService,
     AngularFireDatabase
