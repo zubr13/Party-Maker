@@ -1,16 +1,14 @@
 <div *ngIf="events">
   <div class="list-item" [routerLink]="['/app', 'event', event.$key]" *ngFor="let event of events">
-    <md-card class="example-card" *ngIf="event">
+    <md-card class="example-card">
       <md-card-header>
-        <md-card-title>{{event.name}}</md-card-title>
-        <img class="event-image" md-card-image [src]="event.image || 'src/assets/default-event.png'">
+        <h2>{{event.name}}</h2>
+        <button md-raised-button class="example-margin" *ngIf="!isUserParticipated" (click)="participate()">Participate</button>
       </md-card-header>
+      <img class="event-image" (load)="loadImg($event)" md-card-image [src]="event.image || 'src/assets/default-event.png'">
       <md-card-content>
-        <p>
-          {{event.description}}
-        </p>
+        <p>{{event.description}}</p>
       </md-card-content>
-      <button md-button class="example-margin" *ngIf="!isUserParticipated" (click)="participate()">Participate</button>
     </md-card>
   </div>
 </div>

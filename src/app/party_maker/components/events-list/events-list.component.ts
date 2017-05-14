@@ -11,4 +11,8 @@ export class EventsListComponent {
   constructor(private db: DatabaseService) {
     this.db.getList('events').first().subscribe(d => this.events = d);
   }
+
+  loadImg($event) {
+    $event.currentTarget.style.opacity = 1;
+  }
 }
