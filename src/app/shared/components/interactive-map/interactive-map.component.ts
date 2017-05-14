@@ -15,7 +15,13 @@ export class InteractiveMapComponent implements OnInit {
   events: any;
 
   constructor(private db: DatabaseService, private router: Router, private fb: FacebookService,
-              private authService: AuthService) { }
+              private authService: AuthService) { 
+                const self = this;
+                navigator.geolocation.getCurrentPosition(position => {
+                  self.lat  = position.coords.latitude;
+                  self.lng = position.coords.longitude;
+                });
+              }
 
   ngOnInit() {
     this.db.getList('events')

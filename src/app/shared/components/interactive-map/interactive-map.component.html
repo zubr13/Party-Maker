@@ -3,4 +3,8 @@
                 [longitude]="event.longtitude" [title]="event.name"
                 (markerClick)="goToEvent(event)">
     </agm-marker>
+    <agm-marker [latitude]="lat" 
+                [longitude]="lng" [iconUrl]="'/src/assets/person.png'">
+
+    </agm-marker>
 </agm-map>
