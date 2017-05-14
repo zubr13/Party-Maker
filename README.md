@@ -6,6 +6,8 @@ Create events and share with others on interactive map
 # Description of idea
 Are you bored and don't have ideas where to go, with our application you can find events on interactive map and invite other people. We are going to create progressive web application for managing events. You can create own events in any location and share with others. Anybody can join entertaiments and communicate with others in chat. Each event contains logo, time, location, creator, participants. You can  look the most popular events in your location or web service will offer you events near you.
 
+# [APP](https://partymaker-8826f.firebaseapp.com)
+
 # Participants
 [Andrii Zubrytskyi](https://github.com/zubr13) -
 *Team leader, fullstack developer*

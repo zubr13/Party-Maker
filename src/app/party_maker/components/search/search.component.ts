@@ -14,7 +14,10 @@ export class SearchComponent implements OnInit {
   filteredEvents = [];
   lat: any;
   lng: any;
-  center = {
+  center : {
+    latitude: number,
+    longtitude: number
+  } = {
     latitude: 50,
     longtitude: 50
   };
@@ -52,11 +55,11 @@ export class SearchComponent implements OnInit {
     navigator.geolocation.getCurrentPosition(position => {
       this.lat = position.coords.latitude;
       this.lng = position.coords.longitude;
-    }); 
+    });
     const self = this;
     navigator.geolocation.watchPosition((position) => {
-      self.center.latitude = position.coords.latitude;
-      self.center.longtitude = position.coords.longitude;
+      self.center.latitude = position.coords.latitude as number;
+      self.center.longtitude = position.coords.longitude as number;
     });
     this.db.getList('events')
       .subscribe((events) => {
