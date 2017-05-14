@@ -29,8 +29,8 @@ export class InteractiveMapComponent implements OnInit {
                 this.fb.searchEvents({
                     q:'Kyiv',
                     type: 'event',
-                    since: 'today',
-                    until: 'tomorrow'
+                    since: '2017-05-13',
+                    until: '2017-05-16'
                 }, 20).subscribe(
                     data => this.events = this.events.concat(data.map(event => {
                         if (event.place && event.place.location) {
