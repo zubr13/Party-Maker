@@ -1,9 +1,16 @@
 <div *ngIf="events">
-  <div class="list-item" [routerLink]="['/app', 'event', event.$key]" *ngFor="let event of events">
-    <img [src]="event.image || 'src/assets/kitten.jpg'">
-    <div class="info">
-      <h2>{{event.name}}</h2>
-      <h4>{{event.category}}</h4>
-    </div>
+  <div class="list-item" [routerLink]="['/app', 'event', event.$key, 'info']" *ngFor="let event of events">
+    <md-card class="example-card" *ngIf="event">
+      <md-card-header>
+        <md-card-title>{{event.name}}</md-card-title>
+        <img class="event-image" md-card-image [src]="event.image || 'src/assets/default-event.png'">
+      </md-card-header>
+      <md-card-content>
+        <p>
+          {{event.description}}
+        </p>
+      </md-card-content>
+      <button md-button class="example-margin" *ngIf="!isUserParticipated" (click)="participate()">Participate</button>
+    </md-card>
   </div>
 </div>
