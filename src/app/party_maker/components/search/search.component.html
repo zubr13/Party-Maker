@@ -4,7 +4,7 @@
       <md-card class="search">
         <md-card-title class="searchTitle">
           <md-input-container>
-            <input mdInput placeholder="Event name" value="Kitten's show" [(ngModel)]="searchQuery">
+            <input mdInput placeholder="Event name" [(ngModel)]="searchQuery">
           </md-input-container>
         </md-card-title>
         <md-card-content>
@@ -62,9 +62,6 @@
     <md-icon>search</md-icon>
   </button>
   <agm-map [latitude]="lat" [longitude]="lng" [zoom]="15">
-    <agm-marker [latitude]="lat" 
-                [longitude]="lng" [iconUrl]="'/src/assets/person.png'">
-    </agm-marker>
     <agm-marker *ngFor="let event of filteredEvents" [latitude]="event.latitude"
                 [longitude]="event.longtitude" [title]="event.name"
                 (markerClick)="goToEvent(event)">

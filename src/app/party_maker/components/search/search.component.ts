@@ -12,8 +12,8 @@ import {AuthService} from './../../../shared/serivces/auth.service';
 export class SearchComponent implements OnInit {
   events = [];
   filteredEvents = [];
-  lat: any;
-  lng: any;
+  lat = 50.45466;
+  lng = 30.5238;
   center = {
     latitude: this.lat,
     longtitude: this.lng
@@ -49,10 +49,6 @@ export class SearchComponent implements OnInit {
               private authService: AuthService) {}
 
   ngOnInit() {
-    navigator.geolocation.getCurrentPosition(position => {
-      this.lat = position.coords.latitude;
-      this.lng = position.coords.longitude;
-    });
     this.db.getList('events')
       .subscribe((events) => {
         this.events = events;
@@ -69,7 +65,7 @@ export class SearchComponent implements OnInit {
                 event.$key = event.id;
               }
               return event;
-            })
+            });
             this.events.push(...fbEvents.data);
             this.filterEvents();
           });
@@ -109,7 +105,7 @@ export class SearchComponent implements OnInit {
   }
 
   goToEvent (event) {
-    this.router.navigate(['/app', 'event', event.$key, 'info']);
+    this.router.navigate(['/app', 'event', event.$key]);
   }
 
 }
