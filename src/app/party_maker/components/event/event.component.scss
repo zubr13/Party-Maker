@@ -11,6 +11,10 @@
   float: right;
 }
 
+.md-card {
+    font-family: 'Josefin Sans';
+}
+
 .messages{
     display: flex;
     flex-direction: column;
@@ -27,7 +31,7 @@
 main {
     overflow-y: scroll;
     min-height: 78vh;
-    max-height: 78vh;
+    max-height: 70vh;
     md-card {
         width: 80%;
         margin: 10px 2px;
@@ -56,4 +60,8 @@ footer {
             resize: none;
         }
     }
+}
+
+.chat {
+  margin-top: -61px;
 }

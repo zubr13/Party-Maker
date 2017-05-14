@@ -1,5 +1,12 @@
+<md-list *ngIf="facebookUsers">
+  <md-toolbar>Facebook users</md-toolbar>
+  <md-list-item *ngFor="let user of facebookUsers" (click)="redirectToFacebook(user)">
+    <h3 md-line> {{user.name}} </h3>
+  </md-list-item>
+</md-list>
 <md-list *ngIf="users">
-  <md-list-item *ngFor="let user of users" (click)="toEvent(event)">
+  <md-toolbar>Party-maker users</md-toolbar>
+  <md-list-item *ngFor="let user of users">
     <img md-list-avatar [src]="user.photoURL" >
     <h3 md-line> {{user.displayName}} </h3>
   </md-list-item>

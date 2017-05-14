@@ -1,3 +1,5 @@
+import { AuthService } from './../../../shared/serivces/auth.service';
+import { FacebookService } from 'ng2-facebook-sdk';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { DatabaseService } from './../../../shared/serivces/database.service';
@@ -12,11 +14,19 @@ export class ParticipatedComponent implements OnInit{
 
   public events;
 
+  public facebookEvents = [];
+
   private currentUser;
 
-  constructor(private dbService: DatabaseService,  private fbAuth: AngularFireAuth, private router: Router) { }
+  constructor(
+    private dbService: DatabaseService,  
+    private fbAuth: AngularFireAuth, 
+    private router: Router,
+    private fb: FacebookService,
+    private authService: AuthService) { }
 
   ngOnInit() {
+    this.getFacebookEvents();
     this.currentUser = this.fbAuth.auth.currentUser;
     this.dbService.getList('userEvents', {
       orderByKey: true,
@@ -24,10 +34,11 @@ export class ParticipatedComponent implements OnInit{
     }).subscribe( data => {
       let events = [];
       Object.keys(data).map( key => {
-        event[key]['eventId'] = key;
-        events.push(event[key]);
+        data[key]['eventId'] = key;
+        events.push(data[key]);
       });
-      this.events = events;
+      this.events = [];
+      this.events.concat(events);
     });
   }
 
@@ -37,6 +48,24 @@ export class ParticipatedComponent implements OnInit{
 
   toEvent(event) {
     this.router.navigate(['/app', 'event', event.$key]);
+  }
+
+  toFacebookEvent(event) {
+    this.router.navigate(['/app', 'event', event.id]);
+  }
+
+  getFacebookEvents(){
+    if(this.fbAuth.auth.currentUser.providerData[0].providerId === "facebook.com"){
+      console.log(this.authService.facebookToken);
+      this.fb.api(`me/events?access_token=${this.authService.facebookToken}`).then(data => {
+        console.log(data);
+        data['data'].map( event => {
+          if(event['rsvp_status'] === "attending") {
+            this.facebookEvents.push(event);
+          }
+        });
+      })
+    }
   }
 
 

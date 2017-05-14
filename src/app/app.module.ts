@@ -1,3 +1,4 @@
+import { FacebookAppService } from './shared/serivces/facebook.service';
 import { RouterModule } from '@angular/router';
 import { ProfileComponent } from './party_maker/components/profile/profile.component';
 import { ParticipatedComponent } from './party_maker/components/participated/participated.component';
@@ -88,7 +89,8 @@ const config = {
   ],
   providers: [
     MdIconRegistry,
-    FacebookService
+    FacebookService,
+    FacebookAppService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,3 +1,5 @@
+import { FacebookService } from 'ng2-facebook-sdk';
+import { AuthService } from './../../../shared/serivces/auth.service';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { DatabaseService } from './../../../shared/serivces/database.service';
@@ -16,7 +18,9 @@ export class OrganizedComponent implements OnInit {
   constructor(
     private dbService: DatabaseService,
     private fbAuth: AngularFireAuth,
-    private router: Router
+    private router: Router,
+    private authService: AuthService,
+    private fb: FacebookService
     ) { }
 
   ngOnInit() {
@@ -37,5 +41,4 @@ export class OrganizedComponent implements OnInit {
   toEvent(event) {
     this.router.navigate(['/app', 'event', event.$key]);
   }
-
 }
