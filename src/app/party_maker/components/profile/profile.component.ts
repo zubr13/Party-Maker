@@ -1,7 +1,7 @@
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AuthService } from './../../../shared/serivces/auth.service';
 import { Component, OnInit } from '@angular/core';
-import {FacebookService, LoginResponse, LoginOptions, UIResponse, UIParams, FBVideoComponent} from 'ng2-facebook-sdk';
+import { FacebookService, LoginResponse, LoginOptions, UIResponse, UIParams, FBVideoComponent } from 'ng2-facebook-sdk';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
