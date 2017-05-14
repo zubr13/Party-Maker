@@ -1,6 +1,6 @@
 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="15">
-    <agm-marker *ngFor="let event of events" [latitude]="event.latitude" 
-                [longitude]="event.longtitude" [title]="event.name"
+    <agm-marker *ngFor="let event of events" [latitude]="event.latitude"
+                [longitude]="event.longtitude" [title]="event.title"
                 (markerClick)="goToEvent(event)">
     </agm-marker>
     <agm-marker [latitude]="lat" 
