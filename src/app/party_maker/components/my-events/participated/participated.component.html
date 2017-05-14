@@ -1,5 +1,5 @@
 <md-list>
-  <md-list-item *ngFor="let event of events" (click)="toEvent(event)">
+  <md-list-item *ngFor="let event of events" [routerLink]="['/app', 'event', event.eventId]">
     <img md-list-avatar src="" >
     <h3 md-line> {{event.name}} </h3>
     <p md-line>

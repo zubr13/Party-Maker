@@ -9,5 +9,5 @@
       {{event.description}}
     </p>
   </md-card-content>
-  <md-checkbox class="example-margin" [(ngModel)]="isUserParticipated">Participate</md-checkbox>
+  <button md-button class="example-margin" *ngIf="!isUserParticipated" (click)="participate()">Participate</button>
 </md-card>

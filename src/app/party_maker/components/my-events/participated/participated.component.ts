@@ -19,17 +19,18 @@ export class ParticipatedComponent implements OnInit{
       orderByKey: true,
       equalTo: this.auth.auth.currentUser.uid
     }).subscribe( data => {
+      console.log(data);
       let events = [];
-      Object.keys(data).map( key => {
-        event[key]['eventId'] = key;
-        events.push(event[key]);
+      Object.keys(data[0]).map( key => {
+        data[0][key]['eventId'] = key;
+        events.push(data[0][key]);
       });
       this.events = events;
     });
   }
 
   toEvent(event) {
-    this.router.navigate(['/app', 'event', event.$key]);
+    this.router.navigate(['/app', 'event', event.eventId]);
   }
 
 
