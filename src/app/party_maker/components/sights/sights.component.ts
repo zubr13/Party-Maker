@@ -29,20 +29,22 @@ export class SightsComponent implements OnInit {
                 const {lat, lon} = sight.coordinates[0];
                 // img: sight.thumbnail.source
                 return Object.assign(sight, {
+                    index: sight.index,
+                    title: sight.title,
                     latitude: lat,
                     longtitude: lon,
-                    image: sight.thumbnail ? sight.thumbnail.source : '' })
+                    image: sight.thumbnail ? sight.thumbnail.source : '',
+                    description: sight.terms ? sight.terms.description : ''
+                })
             }))
-            .subscribe(data => {
-                this.events = data;
-                console.log(this.events);
-            });
+            .subscribe(data => this.events = data);
     });
   }
 
     goToEvent (event) {
+      console.log(event);
         this.passD.subject.next(event);
-        this.router.navigate(['/app', 'event', event.index], { queryParams: { type: 'wiki', index: event.index }});
+        this.router.navigate(['/app', 'event', event.index], { queryParams: { type: 'wiki' }});
     }
 
 

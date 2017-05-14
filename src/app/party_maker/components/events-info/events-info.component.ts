@@ -26,7 +26,7 @@ export class EventsInfoComponent implements OnInit {
     this.route.queryParams.first().subscribe(data => {
       console.log(data);
       if (data && data.type === 'wiki') {
-        this.passD.subject.subscribe(data => {
+        this.passD.subject.first().subscribe(data => {
           this.event = data;
           console.log(this.event);
         });

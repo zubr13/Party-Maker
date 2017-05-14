@@ -1,5 +1,5 @@
 <div *ngIf="events">
-  <div class="list-item" [routerLink]="['/app', 'event', event.$key, 'info']" *ngFor="let event of events">
+  <div class="list-item" [routerLink]="['/app', 'event', event.$key]" *ngFor="let event of events">
     <md-card class="example-card" *ngIf="event">
       <md-card-header>
         <md-card-title>{{event.name}}</md-card-title>
