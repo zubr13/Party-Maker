@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {FacebookService} from 'ng2-facebook-sdk';
 import {AuthService} from './../../../shared/serivces/auth.service';
 import {ReplaySubject} from 'rxjs';
+
 @Component({
   selector: 'app-interactive-map',
   templateUrl: './interactive-map.component.html',
@@ -31,9 +32,10 @@ export class InteractiveMapComponent implements OnInit {
           appId: '1955507991402224',
           version: 'v2.9'
         });
-        this.fb.api(`/search?q=Kyiv&type=event&since=today&access_token=${this.authService.facebookToken}`)
+        this.fb.api(`/search?q=Kyiv&type=event&limit=1000&since=today&until=tomorrow&access_token=${this.authService.facebookToken}`)
           .then((fbEvents) => {
             console.log(fbEvents);
+
             const subject = new ReplaySubject();
             let counter = 0;
             const request = (d = fbEvents.paging.next) => this.fb.api(d).then(data => {
