@@ -4,7 +4,27 @@
   }
 }
 
-.event-image {
-  width: 30%;
+md-card {
+  max-width: 400px;
 }
 
+img {
+  width: 400px;
+  margin: 0 auto;
+}
+
+a {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+p {
+  font-size: 20px;
+  color: #484848;
+}
+
+h2 {
+  font-weight: normal;
+  text-transform: uppercase;
+}

@@ -1,3 +1,4 @@
+import { FacebookAppService } from './shared/serivces/facebook.service';
 import { RouterModule } from '@angular/router';
 import { ProfileComponent } from './party_maker/components/profile/profile.component';
 import { ParticipatedComponent } from './party_maker/components/participated/participated.component';
@@ -31,6 +32,7 @@ import { EventsInfoComponent } from './party_maker/components/events-info/events
 import { EventsListComponent } from './party_maker/components/events-list/events-list.component';
 
 import { FacebookModule, FacebookService } from 'ng2-facebook-sdk';
+import { SightsComponent } from './party_maker/components/sights/sights.component';
 
 const config = {
   apiKey: "AIzaSyB8ZSdRKa-a93cJL3QfUldbD_OifHMC24U",
@@ -57,7 +59,8 @@ const config = {
     LogoComponent,
     EventParticipantsComponent,
     EventsInfoComponent,
-    EventsListComponent
+    EventsListComponent,
+    SightsComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +89,8 @@ const config = {
   ],
   providers: [
     MdIconRegistry,
-    FacebookService
+    FacebookService,
+    FacebookAppService
   ],
   bootstrap: [AppComponent]
 })

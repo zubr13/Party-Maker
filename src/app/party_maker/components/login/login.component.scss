@@ -13,8 +13,9 @@
 .img {
   height: 100vh;
   position: relative;
+  //background-image: url('/assets/');
   img {
-    will-change: left;
+    will-change: left, opacity;
     height: 100%;
     width: auto;
     position: absolute;
@@ -22,6 +23,8 @@
     top: 0;
     left: 0;
     bottom: 0;
+    opacity: 0;
+    transition: opacity 3s;
     animation-name: animate;
     animation-duration: 40s;
     animation-direction: alternate;

@@ -11,8 +11,9 @@
           <section class="search--section">
             <p class="search--sectionTitle">Category</p>
             <md-checkbox md-line class="search--checkbox"
+                         (change)="onCategoryChange()"
                          *ngFor="let category of options.category"
-                         [(ngModel)]="category.value">{{category.name}}</md-checkbox>
+                         [(ngModel)]="!category.unchecked">{{category.$value}}</md-checkbox>
           </section>
           <section class="search--section inline">
             <p class="search--sectionTitle">Price</p>
@@ -25,8 +26,8 @@
                     [disabled]="options.price.isFree"
                     [(ngModel)]="options.price.value">
             </md-slider>
-            <!--<a md-fab><p>&#8372; {{!options.price.isFree && options.price.value || 0}}</p></a>-->
-            <!--<md-checkbox class="search&#45;&#45;checkbox" [(ngModel)]="options.price.isFree">free</md-checkbox>-->
+            <a md-fab><p>&#8372; {{!options.price.isFree && options.price.value || 0}}</p></a>
+            <md-checkbox class="search--checkbox" (change)="onFreeChange()" [(ngModel)]="options.price.isFree">free</md-checkbox>
           </section>
 
           <section class="search--section inline">
@@ -39,18 +40,6 @@
                     [(ngModel)]="options.radius">
             </md-slider>
             <a md-fab><p>{{options.radius.toFixed(2)}}</p></a>
-          </section>
-
-          <section class="search--section inline">
-            <p class="search--sectionTitle">Duration</p>
-            <md-slider
-                    class="search--slider"
-                    [max]="50"
-                    [min]="1"
-                    [step]="1"
-                    [(ngModel)]="options.duration">
-            </md-slider>
-            <a md-fab><p>{{options.duration | date: 'hh:mm'}}</p></a>
           </section>
           <section class="search--section">
           </section>
@@ -67,8 +56,8 @@
                 [longitude]="event.longtitude" [title]="event.name"
                 (markerClick)="goToEvent(event)">
     </agm-marker>
-    <agm-marker [latitude]="lat" 
-                [longitude]="lng" [iconUrl]="'/src/assets/person.png'">
+    <agm-marker [latitude]="lat"
+                [longitude]="lng" [iconUrl]="'/assets/person.png'">
     </agm-marker>
     <agm-circle [latitude]="center.latitude" [longitude]="center.longtitude"
                 [radius]="options.radius"

@@ -18,13 +18,16 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = this.fbAuth.auth.currentUser;
-    console.log(this.fbAuth.auth.currentUser);
     this.fb.init({
       appId: '1955507991402224',
       version: 'v2.9'
     }).then( data => {
       console.log(data);
     });
+    console.log(this.fbAuth.auth.currentUser, this.currentUser.providerData[0]);
+    if (this.currentUser.providerData && this.currentUser.providerData[0].providerId.indexOf('facebook') !== -1) {
+      console.log('facebook');
+    }
     // console.log(this.fb.getAuthResponse().);
     this.getFriends();
   }

@@ -22,9 +22,12 @@ import { AgmCoreModule, AgmMap, AgmMarker, AgmCircle } from "@agm/core";
 import { FormsModule } from '@angular/forms';
 import {MdIconModule, MdProgressBarModule} from '@angular/material';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { HttpModule }    from '@angular/http';
 
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { LoaderComponent } from './components/loader/loader.component';
+import { PassDataService } from "./serivces/pass-data.service";
+import {FacebookAppService} from "./serivces/facebook.service";
 
 @NgModule({
   declarations: [
@@ -41,6 +44,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     AngularFireAuthModule,
     FormsModule,
     MdIconModule,
+    HttpModule,
     MdProgressBarModule
   ],
   providers: [
@@ -51,8 +55,10 @@ import { LoaderComponent } from './components/loader/loader.component';
     { provide: 'VkAuthConfig', useClass: VkConfiguration },
     GoogleAuth,
     FacebookAuth,
+    FacebookAppService,
     GithubAuth,
     TwitterAuth,
+    PassDataService,
     VkAuth,
     DatabaseService,
     AngularFireDatabase

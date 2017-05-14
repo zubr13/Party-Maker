@@ -48,6 +48,7 @@ export class LoginComponent implements OnInit {
   facebookLogin(){
     this.facebookAuth.login().then((data) => {
       this.authService.facebookToken = data.credential.accessToken;
+      console.log(data);
       localStorage.setItem('facebookToken', this.authService.facebookToken);
       this.router.navigate(['/app/profile']);
     });
@@ -55,6 +56,10 @@ export class LoginComponent implements OnInit {
 
   githubLogin(){
     this.githubAuth.login().then(() => this.router.navigate(['/app/profile']));
+  }
+
+  loadImg($event) {
+    $event.currentTarget.style.opacity = 1;
   }
 
 }

@@ -46,6 +46,13 @@ export class SearchComponent implements OnInit {
               private authService: AuthService) {}
 
   ngOnInit() {
+    this.db.getList('categories')
+      .subscribe((categories) => {
+        this.options.category = categories;
+        this.options.category.map(cat => {
+          //cat.checked = true;
+        })
+      });
     const self = this;
     navigator.geolocation.getCurrentPosition(position => {
       this.lat = position.coords.latitude;
@@ -69,20 +76,27 @@ export class SearchComponent implements OnInit {
                 event.$key = event.id;
               }
               return event;
-            })
+            });
             this.events.push(...fbEvents.data);
             this.center = {
               latitude: this.lat,
               longtitude: this.lng
-            }
+            };
             this.filterEvents();
           });
       });
   }
 
+  onFreeChange() {
+    if (!this.options.price.isFree) {
+      this.options.price.value = 0;
+      this.onPriceChange();
+    }
+  }
+
   onQueryChange() {
     this.filteredEvents = this.events.filter(
-      (event) => event.name.indexOf(this.searchQuery) !== -1);
+      (event) => event.name && event.name.indexOf(this.searchQuery) !== -1);
   }
 
   onPriceChange() {

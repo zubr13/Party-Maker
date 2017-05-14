@@ -1,3 +1,4 @@
+
 <md-list *ngIf="events">
   <md-list-item *ngFor="let event of events" (click)="toEvent(event)">
     <img md-list-avatar [src]="event.icon" (load)="loadImg($event)">

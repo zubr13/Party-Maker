@@ -1,7 +1,7 @@
 <app-loader [style.opacity]="isLoading ? 1 : 0" [style.zIndex]="isLoading ? 1000000 : -1"></app-loader>
 <md-card *ngIf="!placeOnMapMode">
   <div class="image-container" (click)="fileLoader.click()">
-    <img  [src]="img || imageUrl || 'src/assets/default.jpg'" (load)="loadImg($event)">
+    <img  [src]="img || imageUrl || '/assets/default.jpg'" (load)="loadImg($event)">
     <canvas appCanvasImage
             width="250"
             [config]="{quality: 1, saveRatio: true, jpeg : true}"
@@ -22,7 +22,7 @@
       </md-input-container>
     <p>
       <md-input-container>
-        <input name="description" mdInput [(ngModel)]="event.description" placeholder="Description">
+        <textarea name="description" mdInput [(ngModel)]="event.description" placeholder="Description"></textarea>
       </md-input-container>
     </p>
     <p>
@@ -44,6 +44,6 @@
 <div *ngIf="placeOnMapMode">
   <app-place-on-map [event]="event"></app-place-on-map>
   <p>
-    <button md-raised-button (click)="onPlaceSave()">Save</button>
+    <button md-primary-button (click)="onPlaceSave()">Save</button>
   </p>
 </div>
