@@ -15,8 +15,8 @@ export class SearchComponent implements OnInit {
   lat: any;
   lng: any;
   center = {
-    latitude: this.lat,
-    longtitude: this.lng
+    latitude: 50,
+    longtitude: 50
   };
 
   searchQuery = "Kitten's show";
@@ -71,6 +71,10 @@ export class SearchComponent implements OnInit {
               return event;
             })
             this.events.push(...fbEvents.data);
+            this.center = {
+              latitude: this.lat,
+              longtitude: this.lng
+            }
             this.filterEvents();
           });
       });
