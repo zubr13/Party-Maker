@@ -129,7 +129,7 @@ export class SightsComponent implements OnInit {
     goToEvent (event) {
       console.log(event);
         this.passD.subject.next(event);
-        this.router.navigate(['/app', 'event', event.index], { queryParams: { type: 'wiki' }});
+        this.router.navigate(['/app', 'wiki-article', event.pageid], { queryParams: { type: 'wiki' }});
     }
 
 

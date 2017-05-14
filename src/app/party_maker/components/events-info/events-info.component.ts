@@ -51,6 +51,16 @@ export class EventsInfoComponent implements OnInit {
                   .then((fbEvent) => {
                     this.event = fbEvent;
                   })
+                  .then( () => {
+                    this.fb.api(`/${this.eventId}/attending?access_token=${this.authService.facebookToken}`).then( (data) => {
+                      for(let i = 0; i < data['data'].length; i++){
+                        if(data['data'][i]['id'] === this.auth.auth.currentUser.providerData[0].uid) {
+                          this.isUserParticipated = true;
+                          break;
+                        }
+                      }
+                    });
+                  })
                   .catch(error => console.log(error));
             }
             return event;

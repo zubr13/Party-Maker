@@ -1,3 +1,4 @@
+import { WikiArticleComponent } from './party_maker/components/wiki-article/wiki-article.component';
 import { ProfileComponent } from './party_maker/components/profile/profile.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -69,13 +70,18 @@ const routes: Routes = [
         data: {
           name: 'Search for event'
         }
-      }, {
+      }, 
+      {
         path: 'sights',
         component: SightsComponent,
         data: {
           name: 'Sights'
         }
       },
+      {
+        path: 'wiki-article/:id',
+        component: WikiArticleComponent
+      }
     ],
   },
   {
