@@ -61,11 +61,11 @@
   <button md-mini-fab class='main--sidenavCall' (click)="sidenav.toggle()">
     <md-icon>search</md-icon>
   </button>
-  <agm-map [latitude]="lat" [longitude]="lng">
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="15">
     <agm-marker *ngFor="let event of filteredEvents" [latitude]="event.latitude"
-                [longitude]="event.longtitude" [iconUrl]="event.icon" [title]="event.name"
+                [longitude]="event.longtitude" [title]="event.name"
                 (markerClick)="goToEvent(event)">
-    </agm-marker>
+    </agm-marker> 
     <agm-circle [latitude]="center.latitude" [longitude]="center.longtitude"
                 [radius]="options.radius"
                 [fillColor]="'red'"
