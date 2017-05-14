@@ -3,8 +3,12 @@
     justify-content: flex-end;
 }
 
-.mat-tab-label:first-of-type {
+.first {
     margin-left: auto;
+}
+
+.md-tab {
+  float: right;
 }
 
 .messages{

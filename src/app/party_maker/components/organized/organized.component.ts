@@ -12,16 +12,18 @@ export class OrganizedComponent implements OnInit {
 
   public events;
 
+  private currentUser;
   constructor(
-    private dbService: DatabaseService, 
-    private auth: AngularFireAuth,
+    private dbService: DatabaseService,
+    private fbAuth: AngularFireAuth,
     private router: Router
     ) { }
 
   ngOnInit() {
+    this.currentUser = this.fbAuth.auth.currentUser;
     this.dbService.getList('events', {
       orderByChild: "userId",
-      equalTo: this.auth.auth.currentUser.uid
+      equalTo: this.currentUser.uid
     }).subscribe( data => {
       console.log(data);
       this.events = data;

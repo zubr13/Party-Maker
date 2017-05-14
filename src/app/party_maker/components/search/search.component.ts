@@ -12,14 +12,14 @@ import {AuthService} from './../../../shared/serivces/auth.service';
 export class SearchComponent implements OnInit {
   events = [];
   filteredEvents = [];
-  lat = 50.45466;
-  lng = 30.5238;
+  lat: any;
+  lng: any;
   center = {
-    latitude: this.lat,
-    longtitude: this.lng
+    latitude: 50,
+    longtitude: 50
   };
 
-  searchQuery = "Kitten's show";
+  searchQuery = "";
   options = {
     time: null,
     duration: 0,
@@ -49,6 +49,15 @@ export class SearchComponent implements OnInit {
               private authService: AuthService) {}
 
   ngOnInit() {
+    navigator.geolocation.getCurrentPosition(position => {
+      this.lat = position.coords.latitude;
+      this.lng = position.coords.longitude;
+    }); 
+    const self = this;
+    navigator.geolocation.watchPosition((position) => {
+      self.center.latitude = position.coords.latitude;
+      self.center.longtitude = position.coords.longitude;
+    });
     this.db.getList('events')
       .subscribe((events) => {
         this.events = events;
@@ -65,11 +74,25 @@ export class SearchComponent implements OnInit {
                 event.$key = event.id;
               }
               return event;
-            });
+            })
             this.events.push(...fbEvents.data);
+            this.center = {
+              latitude: this.lat,
+              longtitude: this.lng
+            }
             this.filterEvents();
           });
       });
+  }
+
+  onQueryChange() {
+    this.filteredEvents = this.events.filter(
+      (event) => event.name.indexOf(this.searchQuery) !== -1);
+  }
+
+  onPriceChange() {
+    this.filteredEvents = this.events.filter(
+      (event) => event.price <= this.options.price);
   }
 
   onRadiusChange (event) {
@@ -92,6 +115,7 @@ export class SearchComponent implements OnInit {
   rad (x) {
     return x * Math.PI / 180;
   }
+
   getDistance (lon1, lon2, lat1, lat2) {
     const R = 6378137;
     const dLat = this.rad(lat2 - lat1);

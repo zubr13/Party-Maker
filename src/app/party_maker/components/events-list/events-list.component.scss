@@ -7,13 +7,17 @@ md-grid-tile {
   border-radius: 3px;
   box-shadow: 0 1px 3px 1px rgba(0, 0, 0, .4);
   overflow: hidden;
-  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   .mat-figure {
     display: flex;
     flex-direction: column;
   }
   img {
     height: 75%;
+    width: 30%;
   }
   .info {
     margin: 0 10px;
