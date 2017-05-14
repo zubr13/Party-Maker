@@ -52,10 +52,6 @@ export class SearchComponent implements OnInit {
       this.lng = position.coords.longitude;
       self.center.latitude = this.lat;
       self.center.longtitude = this.lng;
-    }); 
-    navigator.geolocation.watchPosition((position) => {
-      self.center.latitude = position.coords.latitude;
-      self.center.longtitude = position.coords.longitude;
     });
     this.db.getList('events')
       .subscribe((events) => {

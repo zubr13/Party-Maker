@@ -16,14 +16,15 @@ export class InteractiveMapComponent implements OnInit {
 
   constructor(private db: DatabaseService, private router: Router, private fb: FacebookService,
               private authService: AuthService) { 
-                const self = this;
-                navigator.geolocation.getCurrentPosition(position => {
-                  self.lat  = position.coords.latitude;
-                  self.lng = position.coords.longitude;
-                });
               }
 
   ngOnInit() {
+    const self = this;
+      navigator.geolocation.getCurrentPosition(position => {
+        self.lat  = position.coords.latitude;
+        self.lng = position.coords.longitude;
+      });
+           
     this.db.getList('events')
       .subscribe((events) => {
         this.events = events;
