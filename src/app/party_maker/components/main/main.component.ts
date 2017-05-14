@@ -1,5 +1,5 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
+import {Component, ViewChild} from '@angular/core';
+import {ActivatedRoute, Router, NavigationEnd} from "@angular/router";
 import {AuthService} from "../../../shared/serivces/auth.service";
 
 @Component({
@@ -7,9 +7,10 @@ import {AuthService} from "../../../shared/serivces/auth.service";
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
+export class MainComponent {
   @ViewChild('sidenav') private sidenav;
   public routes: Array<Object>;
+  public title: string;
   constructor(
       private router: Router,
       private route: ActivatedRoute,
@@ -24,10 +25,17 @@ export class MainComponent implements OnInit {
       }
       return acc;
     }, []);
-    console.log(route.routeConfig['children'], this.routes);
-  }
 
-  ngOnInit() {
+    router.events.subscribe((val) => {
+      if (val instanceof NavigationEnd) {
+        const splitted = val.url.split('/');
+        const path = splitted[splitted.length - 1];
+        const current = this.route.routeConfig['children'].filter(elem => elem.path === path)[0];
+        if (current && current.data) {
+          this.title = current.data.name;
+        }
+      }
+    });
   }
 
   goTo(path) {
