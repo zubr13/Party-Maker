@@ -4,7 +4,7 @@
       <md-card class="search">
         <md-card-title class="searchTitle">
           <md-input-container>
-            <input mdInput placeholder="Event name" value="Kitten's show" [(ngModel)]="searchQuery">
+            <input mdInput placeholder="Event name"  (change)="onQueryChange()" [(ngModel)]="searchQuery">
           </md-input-container>
         </md-card-title>
         <md-card-content>
@@ -17,6 +17,7 @@
           <section class="search--section inline">
             <p class="search--sectionTitle">Price</p>
             <md-slider
+                    (change)="onPriceChange()"
                     class="search--slider"
                     [max]="1000"
                     [min]="0"
@@ -68,7 +69,7 @@
     <agm-marker *ngFor="let event of filteredEvents" [latitude]="event.latitude"
                 [longitude]="event.longtitude" [title]="event.name"
                 (markerClick)="goToEvent(event)">
-    </agm-marker> 
+    </agm-marker>
     <agm-circle [latitude]="center.latitude" [longitude]="center.longtitude"
                 [radius]="options.radius"
                 [fillColor]="'red'"
