@@ -129,7 +129,7 @@ export class SearchComponent implements OnInit {
   }
 
   goToEvent (event) {
-    this.router.navigate(['/app', 'event', event.$key, 'info']);
+    this.router.navigate(['/app', 'event', event.$key]);
   }
 
 }
