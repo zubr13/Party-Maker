@@ -63,12 +63,12 @@
     <md-icon>search</md-icon>
   </button>
   <agm-map [latitude]="lat" [longitude]="lng" [zoom]="15">
-    <agm-marker [latitude]="lat" 
-                [longitude]="lng" [iconUrl]="'/src/assets/person.png'">
-    </agm-marker>
     <agm-marker *ngFor="let event of filteredEvents" [latitude]="event.latitude"
                 [longitude]="event.longtitude" [title]="event.name"
                 (markerClick)="goToEvent(event)">
+    </agm-marker>
+    <agm-marker [latitude]="lat" 
+                [longitude]="lng" [iconUrl]="'/src/assets/person.png'">
     </agm-marker>
     <agm-circle [latitude]="center.latitude" [longitude]="center.longtitude"
                 [radius]="options.radius"

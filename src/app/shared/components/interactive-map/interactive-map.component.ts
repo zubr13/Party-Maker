@@ -10,18 +10,20 @@ import {AuthService} from './../../../shared/serivces/auth.service';
   styleUrls: ['./interactive-map.component.scss']
 })
 export class InteractiveMapComponent implements OnInit {
-  lat: any;
-  lng: any;
+  lat: any = 50.5555;
+  lng: any = 30.444;
   events: any;
 
   constructor(private db: DatabaseService, private router: Router, private fb: FacebookService,
-              private authService: AuthService) { }
+              private authService: AuthService) { 
+                const self = this;
+                navigator.geolocation.getCurrentPosition(position => {
+                  self.lat  = position.coords.latitude;
+                  self.lng = position.coords.longitude;
+                });
+              }
 
   ngOnInit() {
-    navigator.geolocation.getCurrentPosition(position => {
-      this.lat = position.coords.latitude;
-      this.lng = position.coords.longitude;
-    });
     this.db.getList('events')
       .subscribe((events) => {
         this.events = events;

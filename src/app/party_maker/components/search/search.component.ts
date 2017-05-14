@@ -14,10 +14,7 @@ export class SearchComponent implements OnInit {
   filteredEvents = [];
   lat: any;
   lng: any;
-  center = {
-    latitude: 50,
-    longtitude: 50
-  };
+  center:any = {};
 
   searchQuery = "";
   options = {
@@ -49,11 +46,13 @@ export class SearchComponent implements OnInit {
               private authService: AuthService) {}
 
   ngOnInit() {
+    const self = this;
     navigator.geolocation.getCurrentPosition(position => {
       this.lat = position.coords.latitude;
       this.lng = position.coords.longitude;
+      self.center.latitude = this.lat;
+      self.center.longtitude = this.lng;
     }); 
-    const self = this;
     navigator.geolocation.watchPosition((position) => {
       self.center.latitude = position.coords.latitude;
       self.center.longtitude = position.coords.longitude;
