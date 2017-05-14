@@ -57,4 +57,8 @@ export class LoginComponent implements OnInit {
     this.githubAuth.login().then(() => this.router.navigate(['/app/profile']));
   }
 
+  loadImg($event) {
+    $event.currentTarget.style.opacity = 1;
+  }
+
 }

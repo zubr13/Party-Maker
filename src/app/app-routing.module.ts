@@ -11,7 +11,7 @@ import {SearchComponent} from "./party_maker/components/search/search.component"
 import {EventsListComponent} from "./party_maker/components/events-list/events-list.component";
 import {ParticipatedComponent} from "./party_maker/components/participated/participated.component";
 import {OrganizedComponent} from "./party_maker/components/organized/organized.component";
-
+import {SightsComponent} from './party_maker/components/sights/sights.component';
 const routes: Routes = [
   {
     path: 'login',
@@ -68,6 +68,12 @@ const routes: Routes = [
         component: SearchComponent,
         data: {
           name: 'Search for event'
+        }
+      }, {
+        path: 'sights',
+        component: SightsComponent,
+        data: {
+          name: 'Sights'
         }
       },
     ],
