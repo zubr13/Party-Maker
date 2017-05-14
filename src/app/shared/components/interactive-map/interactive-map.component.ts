@@ -21,9 +21,10 @@ export class InteractiveMapComponent implements OnInit {
   ngOnInit() {
     const self = this;
       navigator.geolocation.getCurrentPosition(position => {
-      self.lat  = position.coords.latitude;
-      self.lng = position.coords.longitude;
-    });
+        self.lat  = position.coords.latitude;
+        self.lng = position.coords.longitude;
+      });
+           
     this.db.getList('events')
       .subscribe((events) => {
         this.events = events;
