@@ -36,7 +36,7 @@ export class ParticipatedComponent implements OnInit{
   }
 
   toEvent(event) {
-    this.router.navigate(['/app', 'event', event.eventId]);
+    this.router.navigate(['/app', 'event', event.$key]);
   }
 
 

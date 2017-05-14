@@ -10,8 +10,8 @@ import {AuthService} from './../../../shared/serivces/auth.service';
   styleUrls: ['./interactive-map.component.scss']
 })
 export class InteractiveMapComponent implements OnInit {
-  lat: any = 50.5555;
-  lng: any = 30.444;
+  lat = 50.45466;
+  lng = 30.5238;
   events: any;
 
   constructor(private db: DatabaseService, private router: Router, private fb: FacebookService,

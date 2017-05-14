@@ -10,8 +10,5 @@ export class AppComponent {
   constructor(private sws: ServiceWorkerService) {
     // Remove comments for testing notifications
     // this.sws.initNotification();
-    sws.installWorker().then( data => {
-      console.log(data);
-    })
   }
 }
