@@ -1,21 +1,3 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Gist
- @zubr13
- Sign out
- Unwatch 4
-  Unstar 2
- Fork 1 zubr13/Party-Maker
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Pulse  Graphs  Settings
-Branch: dev Find file Copy pathParty-Maker/src/app/shared/components/interactive-map/interactive-map.component.ts
-13414ce  12 minutes ago
-@IvanProdaiko94 IvanProdaiko94 - fixes of kate bugs;
-3 contributors @zubr13 @IvanProdaiko94 @Mazurkevichkv
-RawBlameHistory     
-52 lines (48 sloc)  1.91 KB
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from './../../../shared/serivces/database.service';
 import {Router} from "@angular/router";
@@ -45,7 +27,7 @@ export class InteractiveMapComponent implements OnInit {
             .subscribe(events => {
                 this.events = events;
                 this.fb.searchEvents({
-                    q:'Kiev',
+                    q:'Kyiv',
                     type: 'event',
                     since: 'today',
                     until: 'tomorrow'
