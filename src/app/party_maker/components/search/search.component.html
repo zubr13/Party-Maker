@@ -11,8 +11,9 @@
           <section class="search--section">
             <p class="search--sectionTitle">Category</p>
             <md-checkbox md-line class="search--checkbox"
+                         (change)="onCategoryChange()"
                          *ngFor="let category of options.category"
-                         [(ngModel)]="category.value">{{category.name}}</md-checkbox>
+                         [(ngModel)]="!category.unchecked">{{category.$value}}</md-checkbox>
           </section>
           <section class="search--section inline">
             <p class="search--sectionTitle">Price</p>
@@ -26,7 +27,7 @@
                     [(ngModel)]="options.price.value">
             </md-slider>
             <a md-fab><p>&#8372; {{!options.price.isFree && options.price.value || 0}}</p></a>
-            <md-checkbox class="search--checkbox" [(ngModel)]="options.price.isFree">free</md-checkbox>
+            <md-checkbox class="search--checkbox" (change)="onFreeChange()" [(ngModel)]="options.price.isFree">free</md-checkbox>
           </section>
 
           <section class="search--section inline">
