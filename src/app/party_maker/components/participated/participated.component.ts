@@ -12,12 +12,23 @@ export class ParticipatedComponent implements OnInit{
 
   public events;
 
-  constructor(private dbService: DatabaseService, private auth: AngularFireAuth, private router: Router) { }
+  private currentUser;
+
+  constructor(private dbService: DatabaseService,  private fbAuth: AngularFireAuth, private router: Router) { }
 
   ngOnInit() {
-    this.dbService.getList(`userEvents/${this.auth.auth.currentUser.uid}`)
-        .first()
-        .subscribe( data => this.events = data);
+    this.currentUser = this.fbAuth.auth.currentUser;
+    this.dbService.getList('userEvents', {
+      orderByKey: true,
+      equalTo: this.currentUser.uid
+    }).subscribe( data => {
+      let events = [];
+      Object.keys(data).map( key => {
+        event[key]['eventId'] = key;
+        events.push(event[key]);
+      });
+      this.events = events;
+    });
   }
 
   loadImg($event) {
@@ -25,7 +36,7 @@ export class ParticipatedComponent implements OnInit{
   }
 
   toEvent(event) {
-    this.router.navigate(['/app', 'event', event.$key]);
+    this.router.navigate(['/app', 'event', event.eventId]);
   }
 
 
