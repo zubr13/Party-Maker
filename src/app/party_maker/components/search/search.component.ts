@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, SimpleChanges} from '@angular/core';
 import { DatabaseService } from './../../../shared/serivces/database.service';
 import {Router} from "@angular/router";
 import {FacebookService} from 'ng2-facebook-sdk';
@@ -16,10 +16,8 @@ export class SearchComponent implements OnInit {
   lng: any;
   center:any = {};
 
-  searchQuery = "";
   options = {
-    time: null,
-    duration: 0,
+    searchQuery : "",
     category: [
       {
         name: 'Concert',
@@ -34,24 +32,19 @@ export class SearchComponent implements OnInit {
         value: true
       },
     ],
-    price: {
-        isFree: false,
-        value: 2
-    },
-    radius: 1000,
-    data: null
+    price: 2,
+    radius: 1000
   };
 
-  constructor(private db: DatabaseService, private router: Router, private fb: FacebookService,
+  constructor(private db: DatabaseService,
+              private router: Router,
+              private fb: FacebookService,
               private authService: AuthService) {}
 
   ngOnInit() {
     this.db.getList('categories')
       .subscribe((categories) => {
         this.options.category = categories;
-        this.options.category.map(cat => {
-          //cat.checked = true;
-        })
       });
     const self = this;
     navigator.geolocation.getCurrentPosition(position => {
@@ -77,7 +70,8 @@ export class SearchComponent implements OnInit {
               }
               return event;
             });
-            this.events.push(...fbEvents.data);
+            this.events = this.events.concat(fbEvents.data);
+            console.log(this.events);
             this.center = {
               latitude: this.lat,
               longtitude: this.lng
@@ -87,21 +81,24 @@ export class SearchComponent implements OnInit {
       });
   }
 
-  onFreeChange() {
-    if (!this.options.price.isFree) {
-      this.options.price.value = 0;
-      this.onPriceChange();
-    }
-  }
+  onChange(changes: SimpleChanges) {
+   console.log(changes);
+    const opts = this.options;
+    console.log(opts);
+    console.log(this.filteredEvents.length);
 
-  onQueryChange() {
-    this.filteredEvents = this.events.filter(
-      (event) => event.name && event.name.indexOf(this.searchQuery) !== -1);
-  }
+    const unchecked = this.options.category
+        .filter(cat => cat.hasOwnProperty('unchecked'))
+        .map(cat => cat['$value']);
 
-  onPriceChange() {
-    this.filteredEvents = this.events.filter(
-      (event) => event.price <= this.options.price);
+    this.filteredEvents = this.events.filter(event => {
+      const search = this.options.searchQuery !== '' ? event.name.indexOf(this.options.searchQuery) !== -1 : true;
+      const desision =
+          event.name && search && event.name.indexOf(this.options.searchQuery) !== -1 &&
+          event.price > this.options.price && unchecked.indexOf(event.category === -1);
+      return desision;
+    });
+    console.log(this.filteredEvents.length);
   }
 
   onRadiusChange (event) {
@@ -122,7 +119,7 @@ export class SearchComponent implements OnInit {
   }
 
   getDistance (lon1, lon2, lat1, lat2) {
-    const rad = x =>  x * Math.PI / 180;
+    const rad = x => x * Math.PI / 180;
     const R = 6378137;
     const dLat = rad(lat2 - lat1);
     const dLong = rad(lon2 - lon1);
@@ -130,7 +127,7 @@ export class SearchComponent implements OnInit {
       Math.cos(rad(lat1)) * Math.cos(rad(lat2)) *
       Math.sin(dLong / 2) * Math.sin(dLong / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    return R * c;
+    return  R * c;
   }
 
   goToEvent (event) {

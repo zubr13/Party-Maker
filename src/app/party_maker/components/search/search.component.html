@@ -4,30 +4,28 @@
       <md-card class="search">
         <md-card-title class="searchTitle">
           <md-input-container>
-            <input mdInput placeholder="Event name"  (change)="onQueryChange()" [(ngModel)]="searchQuery">
+            <input mdInput placeholder="Event name" (change)="onChange($event)" [(ngModel)]="options.searchQuery">
           </md-input-container>
         </md-card-title>
         <md-card-content>
           <section class="search--section">
             <p class="search--sectionTitle">Category</p>
             <md-checkbox md-line class="search--checkbox"
-                         (change)="onCategoryChange()"
+                         (change)="onChange($event)"
                          *ngFor="let category of options.category"
                          [(ngModel)]="!category.unchecked">{{category.$value}}</md-checkbox>
           </section>
           <section class="search--section inline">
             <p class="search--sectionTitle">Price</p>
             <md-slider
-                    (change)="onPriceChange()"
+                    (change)="onChange($event)"
                     class="search--slider"
                     [max]="1000"
                     [min]="0"
                     [step]="10"
-                    [disabled]="options.price.isFree"
-                    [(ngModel)]="options.price.value">
+                    [(ngModel)]="options.price">
             </md-slider>
-            <a md-fab><p>&#8372; {{!options.price.isFree && options.price.value || 0}}</p></a>
-            <md-checkbox class="search--checkbox" (change)="onFreeChange()" [(ngModel)]="options.price.isFree">free</md-checkbox>
+            <a md-fab><p>&#8372; {{options.price || 0}}</p></a>
           </section>
 
           <section class="search--section inline">
