@@ -27,7 +27,7 @@ import { HttpModule }    from '@angular/http';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { LoaderComponent } from './components/loader/loader.component';
 import { PassDataService } from "./serivces/pass-data.service";
-import { FacebookAppService } from "./serivces/facebook.service";
+import {FacebookAppService} from "./serivces/facebook.service";
 
 @NgModule({
   declarations: [
@@ -55,10 +55,10 @@ import { FacebookAppService } from "./serivces/facebook.service";
     { provide: 'VkAuthConfig', useClass: VkConfiguration },
     GoogleAuth,
     FacebookAuth,
+    FacebookAppService,
     GithubAuth,
     TwitterAuth,
     PassDataService,
-    FacebookAppService,
     VkAuth,
     DatabaseService,
     AngularFireDatabase

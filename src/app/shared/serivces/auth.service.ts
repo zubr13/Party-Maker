@@ -26,7 +26,7 @@ export class AuthService {
   }
 
   authStatus() : Observable<any> {
-    return this.Auth.authState.map(auth => auth);
+    return this.Auth.authState.first();
   }
 
 }

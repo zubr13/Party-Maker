@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {FacebookService} from 'ng2-facebook-sdk';
 import {AuthService} from "./auth.service";
-import {ReplaySubject, Subject} from "rxjs";
+import {ReplaySubject} from "rxjs";
 
 @Injectable()
 export class FacebookAppService {

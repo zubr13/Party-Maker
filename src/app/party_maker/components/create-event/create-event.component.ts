@@ -63,28 +63,30 @@ export class CreateEventComponent {
     this.isLoading = true;
     this.event.userId = this.auth.auth.currentUser.uid;
     this.db.pushDataToList('events', this.event).then(snapshot => {
-      const key = snapshot.key;
-      const loaded = [false, false];
-      const savePath = (n, path) =>
+      if (this.file) {
+        const key = snapshot.key;
+        const loaded = [false, false];
+        const savePath = (n, path) =>
           this.storage.getImage(path).first().subscribe(url => {
             this.db.saveData(`events/${snapshot.key}/${n === 0 ? 'image' : 'icon'}`, url)
           });
 
-      const callback = (n, path) => {
-        loaded[n] = true;
-        savePath(n, path);
-        if (loaded[0] && loaded[1]) {
-          this.isLoading = false;
-          this.router.navigate(['app', 'event', key])
-        }
-      };
-      console.log(key, this.file, this.smallFile);
-      this.storage.uploadFile(`events/${key}/image`, this.file).subscribe(null, null,
+        const callback = (n, path) => {
+          loaded[n] = true;
+          savePath(n, path);
+          if (loaded[0] && loaded[1]) {
+            this.isLoading = false;
+            this.router.navigate(['app', 'event', key])
+          }
+        };
+        console.log(key, this.file, this.smallFile);
+        this.storage.uploadFile(`events/${key}/image`, this.file).subscribe(null, null,
           () => callback(0, `events/${key}/image`)
-      );
-      this.storage.uploadFile(`events/${key}/icon`, this.smallFile).subscribe(null, null,
+        );
+        this.storage.uploadFile(`events/${key}/icon`, this.smallFile).subscribe(null, null,
           () => callback(1, `events/${key}/icon`)
-      );
+        );
+      }
     });
     this.event = {};
   }
