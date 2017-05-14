@@ -6,6 +6,7 @@
         <md-card-title>{{currentUser.displayName}}</md-card-title>
         <md-card-subtitle>{{currentUser.email}}</md-card-subtitle>
         <md-card-subtitle>Logged with: {{currentUser.providerData[0].providerId}}</md-card-subtitle>
+        <md-slide-toggle [checked]="theme" (change)="changeColorScheme($event)">Dark scheme</md-slide-toggle>
       </md-card-header>
       <img class="profile--img" md-card-image [src]="currentUser.photoURL">
       <md-card-content>
