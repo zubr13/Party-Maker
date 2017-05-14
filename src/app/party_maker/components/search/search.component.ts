@@ -52,6 +52,11 @@ export class SearchComponent implements OnInit {
     navigator.geolocation.getCurrentPosition(position => {
       this.lat = position.coords.latitude;
       this.lng = position.coords.longitude;
+    }); 
+    const self = this;
+    navigator.geolocation.watchPosition((position) => {
+      self.center.latitude = position.coords.latitude;
+      self.center.longtitude = position.coords.longitude;
     });
     this.db.getList('events')
       .subscribe((events) => {
