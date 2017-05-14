@@ -23,7 +23,7 @@ export class FacebookAuth implements AuthMethod{
    * @return {firebase.Promise<FirebaseAuthState>} promise with FirebaseAuthState
    */
   login(): firebase.Promise<any>{
-    return this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
+    return this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider().addScope('user_events'));
   }
 }
 
