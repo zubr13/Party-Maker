@@ -10,8 +10,9 @@
             <md-list-item class='main--sidenavItem' md-raised-button (click)="logout()">Logout</md-list-item>
         </md-list>
     </md-sidenav>
-    <md-toolbar [color]="'primary'">
-        <md-icon (click)="sidenav.toggle()">list</md-icon>
+    <md-toolbar style="background-color: #008ca9">
+        <md-icon style="color: white" (click)="sidenav.toggle()">list</md-icon>
+        <h2 class="title">{{title}}</h2>
     </md-toolbar>
 
     <router-outlet></router-outlet>

@@ -1,6 +1,7 @@
 import { RouterModule } from '@angular/router';
-import { MyEventsModule } from './party_maker/components/my-events/my-events.module';
 import { ProfileComponent } from './party_maker/components/profile/profile.component';
+import { ParticipatedComponent } from './party_maker/components/participated/participated.component';
+import { OrganizedComponent } from './party_maker/components/organized/organized.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -50,6 +51,8 @@ const config = {
     EventComponent,
     SearchComponent,
     PlaceOnMapComponent,
+    ParticipatedComponent,
+    OrganizedComponent,
     CreateEventComponent,
     LogoComponent,
     EventParticipantsComponent,
@@ -65,7 +68,6 @@ const config = {
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(config),
     SharedModule,
-    MyEventsModule,
     MdButtonModule,
     MdIconModule,
     MdCheckboxModule,

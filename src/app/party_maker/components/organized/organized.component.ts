@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { DatabaseService } from './../../../../shared/serivces/database.service';
+import { DatabaseService } from './../../../shared/serivces/database.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
