@@ -1,7 +1,3 @@
-
-import { OrganizedComponent } from './party_maker/components/my-events/organized/organized.component';
-import { ParticipatedComponent } from './party_maker/components/my-events/participated/participated.component';
-import { MyEventsComponent } from './party_maker/components/my-events/my-events.component';
 import { ProfileComponent } from './party_maker/components/profile/profile.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -49,20 +45,6 @@ const routes: Routes = [
       {
         path: 'event/:id',
         component: EventComponent
-      },
-      {
-        path: 'my-events',
-        component: MyEventsComponent,
-        children: [
-          {
-            path: 'participated',
-            component: ParticipatedComponent
-          },
-          {
-            path: 'organized',
-            component: OrganizedComponent
-          }
-        ]
       },
       {
         path: 'create',

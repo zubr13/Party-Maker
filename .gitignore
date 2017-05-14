@@ -12,10 +12,13 @@
 /.idea
 .project
 .classpath
+
+
 .c9/
 *.launch
 .settings/
 *.sublime-workspace
+/public
 
 # IDE - VSCode
 .vscode/*

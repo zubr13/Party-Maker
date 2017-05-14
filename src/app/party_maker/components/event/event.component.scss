@@ -22,8 +22,8 @@
 
 main {
     overflow-y: scroll;
-    min-height: 80vh;
-    max-height: 80vh;
+    min-height: 78vh;
+    max-height: 78vh;
     md-card {
         width: 80%;
         margin: 10px 2px;
@@ -45,7 +45,7 @@ footer {
     justify-content: space-between;
     align-items: center;
     max-height: 15%;
-
+    padding: 10px;
     md-input-container {
         width: 70%;
         textarea {

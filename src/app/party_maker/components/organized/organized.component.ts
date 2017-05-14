@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { DatabaseService } from './../../../../shared/serivces/database.service';
+import { DatabaseService } from './../../../shared/serivces/database.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -28,8 +28,12 @@ export class OrganizedComponent implements OnInit {
     });
   }
 
+  loadImg($event) {
+    $event.currentTarget.style.opacity = 1;
+  }
+
   toEvent(event) {
-    this.router.navigate(['/app', 'event', event.$key, 'info']);
+    this.router.navigate(['/app', 'event', event.$key]);
   }
 
 }

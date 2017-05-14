@@ -1,6 +1,10 @@
 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="15">
+    <agm-marker [latitude]="lat" 
+                [longitude]="lng" [iconUrl]="'/src/assets/person.png'">
+
+    </agm-marker>
     <agm-marker *ngFor="let event of events" [latitude]="event.latitude" 
-                [longitude]="event.longtitude" [iconUrl]="event.icon" [title]="event.name"
+                [longitude]="event.longtitude" [title]="event.name"
                 (markerClick)="goToEvent(event)">
     </agm-marker>
 </agm-map>

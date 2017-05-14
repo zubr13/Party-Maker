@@ -1,6 +1,12 @@
 .main{
   height: 100vh;
 
+  .title {
+    color: whitesmoke;
+    margin: 0 0 0 auto;
+    font-weight: normal;
+  }
+
   &--sidenav {
     width: 75vw;
     max-width: 400px;
@@ -38,6 +44,6 @@
     position: absolute;
     top: 2px;
     right: 2px;
-    z-index: 100000;
+    z-index: 1000000000000;
   }
 }

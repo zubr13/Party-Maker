@@ -3,7 +3,7 @@
     <div md-card-avatar class="example-header-image"></div>
     <md-card-title>{{event.name}}</md-card-title>
   </md-card-header>
-  <img md-card-image [src]="event.image || 'https://angular.io/resources/images/logos/angular/angular.svg'">
+  <img class="event-image" md-card-image [src]="event.image || 'src/assets/default-event.png'">
   <md-card-content>
     <p>
       {{event.description}}
